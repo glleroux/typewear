@@ -1,0 +1,183 @@
+@font-face {
+  font-family: "sk-modernistbold";
+  src: url("fonts/sk-modernist-bold-webfont-webfont.woff2") format("woff2"),
+    url("fonts/sk-modernist-bold-webfont-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "sk-modernistmono";
+  src: url("fonts/sk-modernist-mono-webfont-webfont.woff2") format("woff2"),
+    url("fonts/sk-modernist-mono-webfont-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "sk-modernistregular";
+  src: url("fonts/sk-modernist-regular-webfont-webfont.woff2") format("woff2"),
+    url("fonts/sk-modernist-regular-webfont-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.page-container {
+  min-height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.logo {
+  font-family: "sk-modernistbold";
+  color: #363636;
+  padding-left: 36px;
+  margin: 0;
+  font-size: 24px;
+}
+
+.logo-bar {
+  color: #f05a47;
+}
+
+.strap {
+  font-family: "sk-modernistmono";
+  color: #363636;
+  font-size: 14px;
+  padding-right: 36px;
+}
+
+.content-wrapper {
+  flex: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.control-panel {
+  height: 400px;
+  width: 400px;
+  border-top: 1px solid #6d6d6d;
+  border-bottom: 1px solid #6d6d6d;
+  display: flex;
+  flex-direction: column;
+}
+
+.source-container {
+  display: flex;
+}
+
+.source {
+  width: 133.33px;
+}
+
+.source-text {
+  font-family: "sk-modernistmono";
+  color: #363636;
+  font-size: 12px;
+  text-align: center;
+}
+
+.control-font-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.font-family {
+  user-select: none;
+}
+
+.buttons-container {
+  display: flex;
+}
+
+.button {
+  width: 90px;
+  height: 40px;
+  margin: 18px;
+  border: 1px solid #6d6d6d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-text {
+  font-family: "sk-modernistregular";
+  color: #3a3a3a;
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
+}
+
+.select {
+  background-color: #3a3a3a;
+  width: 120px;
+}
+
+.select:hover {
+  background-color: #f05a47;
+  border: 1px solid #f05a47;
+  transition: all ease 0.2s;
+}
+
+.select p {
+  color: #f5f5f5;
+  font-weight: 500;
+}
+
+.backdrop {
+  height: 400px;
+  width: 400px;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+}
+
+.result-image {
+  padding-top: 40px;
+  position: relative;
+}
+
+.result-font-container {
+  position: absolute;
+  top: 330px;
+}
+
+#shirt-font {
+  font-size: 8px;
+  letter-spacing: normal;
+}
+
+.font-family {
+  font-size: 80px;
+  letter-spacing: 2px;
+  margin: 0;
+  color: #3a3a3a;
+}
+
+footer {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-tag {
+  font-family: "sk-modernistmono";
+  color: #363636;
+  font-size: 12px;
+  margin: 0;
+}
