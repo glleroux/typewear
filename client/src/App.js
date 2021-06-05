@@ -4,6 +4,7 @@ import Header from './Components/Header'
 import ControlPanel from './Components/ControlPanel'
 import ResultPanel from './Components/ResultPanel'
 import Footer from './Components/Footer'
+import StripeContainer from './Components/StripeContainer'
 
 require('dotenv').config()
 const axios = require('axios')
@@ -113,6 +114,7 @@ const App = () => {
         <ResultPanel font={fontsToBeDisplayed.data[fontIndex]}/>
       </div>
       <Footer />
+      <StripeContainer />
     </div>
   );
 }
