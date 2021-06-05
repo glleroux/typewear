@@ -8,6 +8,24 @@ const PaymentForm = () => {
     const stripe = useStripe()
     const elements = useElements()
 
+    const cardStyle = {
+        style: {
+            base: {
+                color: "#32325d",
+                fontFamily: 'Arial, sans-serif',
+                fontSmoothing: "antialiased",
+                fontSize: "16px",
+                "::placeholder": {
+                color: "#32325d"
+                }
+            },
+            invalid: {
+                color: "#fa755a",
+                iconColor: "#fa755a"
+            }
+        }
+      };
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const {error, paymentMethod} = await stripe.createPaymentMethod({
@@ -39,7 +57,7 @@ const PaymentForm = () => {
 
         return (
             <form onSubmit={handleSubmit} style={{ maxWidth: 400 }}>
-                <CardElement />
+                <CardElement options={cardStyle}/>
                 <button>Pay</button>
             </form>
             
