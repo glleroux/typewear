@@ -4,9 +4,27 @@ import axios from 'axios'
 
 const PaymentForm = () => {
 
-    // const [success, setSuccess] = useState(false)
+    const [success, setSuccess] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
+
+    const cardStyle = {
+        style: {
+            base: {
+                color: "#32325d",
+                fontFamily: 'Arial, sans-serif',
+                fontSmoothing: "antialiased",
+                fontSize: "16px",
+                "::placeholder": {
+                color: "#32325d"
+                }
+            },
+            invalid: {
+                color: "#fa755a",
+                iconColor: "#fa755a"
+            }
+        }
+      };
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -38,10 +56,7 @@ const PaymentForm = () => {
     }
 
         return (
-            <form onSubmit={handleSubmit} style={{ maxWidth: 400 }}>
-                <CardElement />
-                <button>Pay</button>
-            </form>
+            <form onSubmit={handleSubmit} style={{ maxWidth: 400 }}></form>
             
             //FOR LATER
             // <>

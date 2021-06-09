@@ -22,7 +22,7 @@ const App = () => {
 
     const responseCommon = await axios.get(`https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_KEY}&sort=popularity`)
     const fontObjectsCommon = responseCommon.data.items
-    const fontNamesCommon = fontObjectsCommon.map(font => font.family)
+    const fontNamesCommon = fontObjectsCommon.map(font => font.family).slice(0,200)
     await setCommonFonts(commonFonts.concat(fontNamesCommon))
     console.log("common fonts got")
   }
@@ -63,6 +63,14 @@ const App = () => {
   const [fontsToBeDisplayed, setFontsToBeDisplayed] = useState({name: 'trending', data: trendingFonts})
 
   useEffect(getFonts, [])
+
+  const dataSizes = {
+    trending: trendingFonts.length,
+    common: commonFonts.length,
+    all: allFonts.length
+  }
+
+  console.log(dataSizes.all)
 
   //INPUT EVENT HANDLERS -- SOURCE
   const handleChangeSource = (e) => {
@@ -110,11 +118,16 @@ const App = () => {
     <div className="page-container">
       <Header />
       <div className="content-wrapper">
-        <ControlPanel font={fontsToBeDisplayed.data[fontIndex]} handlePrevNext={handlePrevNext} handleChangeSource={handleChangeSource}/>
+        <ControlPanel 
+        font={fontsToBeDisplayed.data[fontIndex]} 
+        handlePrevNext={handlePrevNext} 
+        handleChangeSource={handleChangeSource} 
+        sizes={dataSizes}
+        />
         <ResultPanel font={fontsToBeDisplayed.data[fontIndex]}/>
       </div>
       <Footer />
-      <StripeContainer />
+      {/* <StripeContainer /> */}
     </div>
   );
 }
