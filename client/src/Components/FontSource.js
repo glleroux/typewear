@@ -1,7 +1,7 @@
-const FontSource = ({ label, handleChangeSource }) => {
+const FontSource = ({ label, handleChangeSource, size }) => {
     return (
       <div id={label} className="source" onClick={handleChangeSource}>
-        <p id={label} className="source-text">{label}</p>
+        <p id={label} className="source-text">{label} ({size})</p>
       </div>
     )
 }

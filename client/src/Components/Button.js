@@ -1,6 +1,6 @@
-const Button = ({ label, role, handlePrevNext }) => {
+const Button = ({ label, role, handler }) => {
     return (
-    <div id={label} className={"button " + (role ? 'select' : '')} onClick={handlePrevNext}>
+    <div id={label} className={"button " + (role ? 'select' : '')} onClick={handler}>
       <p id={label} className="button-text">{label}</p>
     </div>
     )
