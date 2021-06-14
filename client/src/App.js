@@ -61,6 +61,18 @@ const App = () => {
   const [commonFonts, setCommonFonts] = useState([])
   const [fontIndex, setFontIndex] = useState(0)
   const [fontsToBeDisplayed, setFontsToBeDisplayed] = useState({name: 'trending', data: trendingFonts})
+  const [formStep, setFormStep] = useState(1)
+  const [order, setOrder] = useState({
+    font: '',
+    size: '',
+    info: {
+      name: '',
+      address: '',
+      city: '',
+      state: '',
+      zip: ''
+    }
+  })
 
   useEffect(getFonts, [])
 
@@ -118,12 +130,18 @@ const App = () => {
     <div className="page-container">
       <Header />
       <div className="content-wrapper">
-        <ControlPanel 
-        font={fontsToBeDisplayed.data[fontIndex]} 
-        handlePrevNext={handlePrevNext} 
-        handleChangeSource={handleChangeSource} 
-        sizes={dataSizes}
-        />
+        {allFonts ? 
+          <ControlPanel 
+          font={fontsToBeDisplayed.data[fontIndex]} 
+          handlePrevNext={handlePrevNext} 
+          handleChangeSource={handleChangeSource} 
+          sizes={dataSizes}
+          formStep={formStep}
+          setFormStep={setFormStep}
+          order={order}
+          setOrder={setOrder}
+          />
+          : <div></div>}
         <ResultPanel font={fontsToBeDisplayed.data[fontIndex]}/>
       </div>
       <Footer />
