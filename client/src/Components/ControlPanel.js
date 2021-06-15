@@ -9,8 +9,7 @@ import Step2 from './Step2'
 import { useState } from 'react';
 
 const ControlPanel = ({ font, handlePrevNext, handleChangeSource, sizes, formStep, setFormStep, order, setOrder }) => {
-
-  const [isFontSelected, toggleFontSelected] = useState(false)  
+ 
   const [selectedSize, setSelectedSize] = useState(null)
 
   //INPUT EVENT HANDLERS -- SELECT
@@ -20,8 +19,9 @@ const ControlPanel = ({ font, handlePrevNext, handleChangeSource, sizes, formSte
     console.log("yas")
   }
 
-  const handleSizeSelect = () => {
-    setOrder({...order, size: font})
+  const handleSizeChoice = () => {
+    console.log("hi")
+    setOrder({...order, size: selectedSize})
     setFormStep(3)
     console.log('double yas')
   }
@@ -59,7 +59,9 @@ const ControlPanel = ({ font, handlePrevNext, handleChangeSource, sizes, formSte
       <Step2 
         formStep={formStep}
         setFormStep={setFormStep}
+        selectedSize={selectedSize}
         setSelectedSize={setSelectedSize}
+        handleSizeChoice={handleSizeChoice}
         />
     </form>
   )
