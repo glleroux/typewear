@@ -145,7 +145,6 @@ const App = () => {
         <ResultPanel font={fontsToBeDisplayed.data[fontIndex]}/>
       </div>
       <Footer />
-      {/* <StripeContainer /> */}
     </div>
   );
 }

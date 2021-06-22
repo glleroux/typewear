@@ -27,6 +27,7 @@ const PaymentForm = () => {
       };
 
     const handleSubmit = async (e) => {
+        console.log("submitted")
         e.preventDefault()
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: "card",
@@ -56,7 +57,10 @@ const PaymentForm = () => {
     }
 
         return (
-            <form onSubmit={handleSubmit} style={{ maxWidth: 400 }}></form>
+            <form id="stripe-input" onSubmit={handleSubmit} style={{ maxWidth: 304 }}>
+                <CardElement />
+                <button className='button'>Pay</button>
+            </form>
             
             //FOR LATER
             // <>

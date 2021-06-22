@@ -6,11 +6,22 @@ import SizeMenu from './SizeList'
 
 import Step1 from './Step1'
 import Step2 from './Step2'
+import Step3 from './Step3'
+import Step4 from './Step4'
+
 import { useState } from 'react';
 
 const ControlPanel = ({ font, handlePrevNext, handleChangeSource, sizes, formStep, setFormStep, order, setOrder }) => {
  
   const [selectedSize, setSelectedSize] = useState(null)
+  const [addressValue, setAddressValue] = useState({
+    name: '',
+    email: '',
+    address: '',
+    city: '',
+    state: '',
+    zip: ''
+})
 
   //INPUT EVENT HANDLERS -- SELECT
   const handleFontSelect = () => {
@@ -24,6 +35,12 @@ const ControlPanel = ({ font, handlePrevNext, handleChangeSource, sizes, formSte
     setOrder({...order, size: selectedSize})
     setFormStep(3)
     console.log('double yas')
+  }
+
+  const handleAddressSubmit = () => {
+    console.log("hey")
+    setOrder({...order, info: addressValue})
+    setFormStep(4)
   }
 
   // if(!isFontSelected) {
@@ -47,7 +64,7 @@ const ControlPanel = ({ font, handlePrevNext, handleChangeSource, sizes, formSte
   //   }
 
   return (
-    <form>
+    <div>
       <Step1
         formStep={formStep}
         handleChangeSource={handleChangeSource}
@@ -59,11 +76,21 @@ const ControlPanel = ({ font, handlePrevNext, handleChangeSource, sizes, formSte
       <Step2 
         formStep={formStep}
         setFormStep={setFormStep}
-        selectedSize={selectedSize}
         setSelectedSize={setSelectedSize}
         handleSizeChoice={handleSizeChoice}
         />
-    </form>
+      <Step3
+        formStep={formStep}
+        setFormStep={setFormStep}
+        addressValue={addressValue}
+        setAddressValue={setAddressValue}
+        handleAddressSubmit={handleAddressSubmit}   
+        />
+      <Step4
+        formStep={formStep}
+        setFormStep={setFormStep}
+        />
+    </div>
   )
 }
 
