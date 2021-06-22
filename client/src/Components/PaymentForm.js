@@ -1,8 +1,9 @@
 import { React, useState } from 'react';
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
+import Button from './Button'
 import axios from 'axios'
 
-const PaymentForm = () => {
+const PaymentForm = ({ setFormStep }) => {
 
     const [success, setSuccess] = useState(false)
     const stripe = useStripe()
@@ -59,7 +60,10 @@ const PaymentForm = () => {
         return (
             <form id="stripe-input" onSubmit={handleSubmit} style={{ maxWidth: 304 }}>
                 <CardElement />
-                <button className='button'>Pay</button>
+                <div className='buttons-container'>
+                    <Button label='BACK' handler={() => setFormStep(3)}/>   
+                    <button className='button select'><p className='button-text'>PAY</p></button>
+                </div>
             </form>
             
             //FOR LATER
