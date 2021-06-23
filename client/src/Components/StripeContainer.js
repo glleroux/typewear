@@ -7,10 +7,10 @@ import PaymentForm from './PaymentForm'
 const PUBLIC_KEY = 'pk_test_51Iz0OeAlXiPETQsLSE8tE9oogXXZgUMb5tFtVSZthbtC1vsVHQDXMowp1BV6ywNQlbCYzmEBykTUQ5amUfLNiwWb008Ul7KLHd'
 const stripeTestPromise = loadStripe(PUBLIC_KEY)
 
-const StripeContainer = () => {
+const StripeContainer = ({setFormStep}) => {
     return (
         <Elements stripe={stripeTestPromise}>
-            <PaymentForm />
+            <PaymentForm setFormStep={setFormStep}/>
         </Elements>
     )
 }

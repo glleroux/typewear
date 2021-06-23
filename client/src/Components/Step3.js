@@ -29,7 +29,6 @@ const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAd
                     <Button label='CONTINUE' role='select' handler={() => handleAddressSubmit()}/>
                 </div>
             </div>
-
         </div>
     )
 

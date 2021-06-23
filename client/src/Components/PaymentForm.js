@@ -1,8 +1,9 @@
 import { React, useState } from 'react';
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
+import Button from './Button'
 import axios from 'axios'
 
-const PaymentForm = () => {
+const PaymentForm = ({ setFormStep }) => {
 
     const [success, setSuccess] = useState(false)
     const stripe = useStripe()
@@ -37,20 +38,22 @@ const PaymentForm = () => {
         if(!error) {
             console.log("Stripe 23 | token generated", paymentMethod)
             //FOR BACKEND
-            // try {
-            //     const {id} = paymentMethod
-            //     const response = await axios.post("http://localhost:4000/payment", {
-            //         amount: 2000,
-            //         id
-            //     })
+            try {
+                const {id} = paymentMethod
+                console.log('trying')
+                const response = await axios.post("http://localhost:8080/payment", {
+                    amount: 2999,
+                    id
+                })
 
-            //     if (response.data.success) {
-            //         console.log("successful payment")
-            //         setSuccess(true)
-            //     }
-            // } catch (error) {
-            //     console.log("Error", error)
-            // }
+                if (response.data.success) {
+                    console.log("successful payment")
+                    setSuccess(true)
+                    setFormStep(5)
+                }
+            } catch (error) {
+                console.log("Error", error)
+            }
         } else {
             console.log(error.message)
         }
@@ -59,7 +62,10 @@ const PaymentForm = () => {
         return (
             <form id="stripe-input" onSubmit={handleSubmit} style={{ maxWidth: 304 }}>
                 <CardElement />
-                <button className='button'>Pay</button>
+                <div className='buttons-container'>
+                    <Button label='BACK' handler={() => setFormStep(3)}/>   
+                    <button className='button select'><p className='button-text'>PAY</p></button>
+                </div>
             </form>
             
             //FOR LATER

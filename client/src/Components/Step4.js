@@ -9,10 +9,9 @@ const Step4 = ({ formStep, setFormStep }) => {
     
     return (
         <div className='control-panel'>
-            <div className='buttons-container'>
-                    <Button label='BACK' handler={() => setFormStep(3)}/>   
-                    <Button label='CONTINUE' role='select'/>
-            </div>  
+            <div className='form-container'>
+                <StripeContainer setFormStep={setFormStep}/>
+            </div> 
         </div>
     )
 }

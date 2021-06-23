@@ -165,6 +165,11 @@ header {
   align-items: center;
 }
 
+#button {
+  padding: none;
+  border: none;
+}
+
 .button-text {
   font-family: "sk-modernistregular";
   color: #3a3a3a;
@@ -249,7 +254,11 @@ header {
 }
 
 #stripe-input {
-  margin: 180px 48px;
+  margin-top: 132px;
+}
+
+.StripeElement {
+  margin-bottom: 16px;
 }
 
 .backdrop {
