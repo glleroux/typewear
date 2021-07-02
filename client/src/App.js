@@ -67,6 +67,7 @@ const App = () => {
     size: '',
     info: {
       name: '',
+      email: '',
       address: '',
       city: '',
       state: '',

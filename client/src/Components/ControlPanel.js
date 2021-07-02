@@ -90,6 +90,7 @@ const ControlPanel = ({ font, handlePrevNext, handleChangeSource, sizes, formSte
       <Step4
         formStep={formStep}
         setFormStep={setFormStep}
+        order={order}
         />
       <Step5
         formStep={formStep}

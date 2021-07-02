@@ -3,7 +3,34 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import Button from './Button'
 import axios from 'axios'
 
-const PaymentForm = ({ setFormStep }) => {
+const order = {
+    "Font": "pattaya"
+}
+
+const sendOrder = async (order) => {
+
+    console.log("sending", order)
+
+    const {font, size} = order
+    const {name, email, address, city, state, zip} = order.info
+    const shippingAddress = `${address}, ${city}, ${state}, ${zip}` 
+
+    await axios.post(`https://api.airtable.com/v0/app6svFgRrfkw1py9/Orders`, {
+        "fields": {
+            "Name": name,
+            "Email": email,
+            "Font": font,
+            "Size": size,
+            "Address": shippingAddress
+        }
+    }, {
+        headers: {
+            'Authorization': "Bearer key8WopV2OEIOtCou"
+        }
+    })
+}
+
+const PaymentForm = ({ setFormStep, order, options }) => {
 
     const [success, setSuccess] = useState(false)
     const stripe = useStripe()
@@ -12,17 +39,27 @@ const PaymentForm = ({ setFormStep }) => {
     const cardStyle = {
         style: {
             base: {
-                color: "#32325d",
-                fontFamily: 'Arial, sans-serif',
+                iconColor: "#ffffff",
+                color: "#3a3a3a",
+                fontFamily: 'roboto-mono, sans-serif',
                 fontSmoothing: "antialiased",
                 fontSize: "16px",
                 "::placeholder": {
                 color: "#32325d"
+                },
+                "::selection": {
+                    backgroundColor: "#f5f5f5"
                 }
+
             },
             invalid: {
                 color: "#fa755a",
                 iconColor: "#fa755a"
+            },
+            empty: {
+                "::placeholder": {
+                    color: "#6d6d6d"
+                    }    
             }
         }
       };
@@ -50,6 +87,7 @@ const PaymentForm = ({ setFormStep }) => {
                     console.log("successful payment")
                     setSuccess(true)
                     setFormStep(5)
+                    sendOrder(order)
                 }
             } catch (error) {
                 console.log("Error", error)
@@ -61,7 +99,7 @@ const PaymentForm = ({ setFormStep }) => {
 
         return (
             <form id="stripe-input" onSubmit={handleSubmit} style={{ maxWidth: 304 }}>
-                <CardElement />
+                <CardElement options={cardStyle }/>
                 <div className='buttons-container'>
                     <Button label='BACK' handler={() => setFormStep(3)}/>   
                     <button className='button select'><p className='button-text'>PAY</p></button>
