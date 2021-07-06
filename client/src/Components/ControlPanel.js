@@ -38,31 +38,11 @@ const ControlPanel = ({ font, handlePrevNext, handleChangeSource, sizes, formSte
     console.log('double yas')
   }
 
-  const handleAddressSubmit = () => {
+  const handleAddressSubmit = () => { 
     console.log("hey")
     setOrder({...order, info: addressValue})
     setFormStep(4)
   }
-
-  // if(!isFontSelected) {
-  //   return (
-  //   <div className="control-panel">
-  //     <Sources handleChangeSource={handleChangeSource} sizes={sizes}/>
-  //     <Font containerClass={'control-font-container'} font={font}/>
-  //     <Buttons handlePrevNext={handlePrevNext} handleSelect={handleSelect}/>
-  //   </div>
-  // )
-  //   } else {
-  //     return (
-  //       <div className="control-panel cp-selected">
-  //         <SizeMenu setSelectedSize={setSelectedSize}/>
-  //         <div className='buttons-container'>
-  //           <Button label='BACK' handler={() => toggleFontSelected(false)}/>
-  //           <Button label='CONTINUE' role='select'/>
-  //         </div>
-  //       </div>
-  //     )
-  //   }
 
   return (
     <div>

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Header from './Components/Header'
 import ControlPanel from './Components/ControlPanel'
 import ResultPanel from './Components/ResultPanel'
+import InfoPanel from './Components/InfoPanel'
 import Footer from './Components/Footer'
 import StripeContainer from './Components/StripeContainer'
 
@@ -74,6 +75,7 @@ const App = () => {
       zip: ''
     }
   })
+  const [infoShown, setInfoShown] = useState(true)
 
   useEffect(getFonts, [])
 
@@ -143,7 +145,8 @@ const App = () => {
           setOrder={setOrder}
           />
           : <div></div>}
-        <ResultPanel font={fontsToBeDisplayed.data[fontIndex]}/>
+        {infoShown ? <InfoPanel setInfoShown={setInfoShown}/> : <ResultPanel font={fontsToBeDisplayed.data[fontIndex]}/>}
+        
       </div>
       <Footer />
     </div>

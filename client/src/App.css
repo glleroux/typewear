@@ -153,6 +153,7 @@ header {
 
 .buttons-container {
   display: flex;
+  justify-content: center;
 }
 
 .button {
@@ -261,6 +262,16 @@ header {
   margin-bottom: 16px;
 }
 
+.success-message {
+  font-family: "sk-modernistregular";
+  color: #363636;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .backdrop {
   height: 400px;
   width: 400px;
@@ -282,6 +293,22 @@ header {
 #shirt-font {
   font-size: 8px;
   letter-spacing: normal;
+}
+
+#product-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#product-info {
+  font-family: "sk-modernistmono";
+  color: #3a3a3a;
+  font-size: 14px;
+}
+
+#product-price {
+  font-family: "sk-modernistbold";
+  font-size: 20px;
 }
 
 .font-family {
