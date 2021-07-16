@@ -14,7 +14,7 @@ const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAd
     }
 
     return (
-        <div className='control-panel'>
+        <>
             <div className='form-container'>
                 <FormField label='name' placeholder='Gordon Bombay' value={addressValue.name} onChange={onChange}/>
                 <FormField label='email'placeholder='gordon@themightyducks.com' value={addressValue.email} onChange={onChange}/>
@@ -24,12 +24,12 @@ const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAd
                     <FormField label='state' placeholder='MN' extraClass='field-short' value={addressValue.state} onChange={onChange}/>
                     <FormField label='zip' placeholder='55404' extraClass='field-short' value={addressValue.zip} onChange={onChange}/>
                 </div>
-                <div className='buttons-container'>
+            </div>
+            <div className='buttons-container'>
                     <Button label='BACK' handler={() => setFormStep(2)}/>   
                     <Button label='CONTINUE' role='select' handler={() => handleAddressSubmit()}/>
                 </div>
-            </div>
-        </div>
+        </>
     )
 
 }

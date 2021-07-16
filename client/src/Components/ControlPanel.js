@@ -1,9 +1,3 @@
-import Sources from '../Components/Sources'
-import Font from '../Components/Font'
-import Buttons from './FontSelectButtons'
-import Button from './Button'
-import SizeMenu from './SizeList'
-
 import Step1 from './Step1'
 import Step2 from './Step2'
 import Step3 from './Step3'
@@ -38,14 +32,14 @@ const ControlPanel = ({ font, handlePrevNext, handleChangeSource, sizes, formSte
     console.log('double yas')
   }
 
-  const handleAddressSubmit = () => { 
+  const handleAddressSubmit = () => {
     console.log("hey")
     setOrder({...order, info: addressValue})
     setFormStep(4)
   }
 
   return (
-    <div>
+    <div className='step-container'>
       <Step1
         formStep={formStep}
         handleChangeSource={handleChangeSource}

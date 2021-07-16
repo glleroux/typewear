@@ -7,13 +7,13 @@ const Step2 = ({ formStep, setFormStep, setSelectedSize, handleSizeChoice }) => 
     }
 
     return (
-        <div className='control-panel cp-selected'>
+        <>
             <SizeList setSelectedSize={setSelectedSize}/>
             <div className='buttons-container'>
                 <Button label='BACK' handler={() => setFormStep(1)}/>
                 <Button label='CONTINUE' role='select' handler={() => handleSizeChoice()}/>
             </div>
-        </div>
+        </>
     )
 }
 

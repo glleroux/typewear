@@ -8,7 +8,7 @@ const ResultPanel = ({ font }) => {
       <div className="backdrop">
         <img className="result-image" alt="t shirt featuring chosen logo" src={resultImage}></img>
         <Font id='shirt-font' containerClass={'result-font-container'} font={font}/>
-        <InfoOutlinedIcon />
+        {/* <InfoOutlinedIcon /> */}
       </div>
       
       </>

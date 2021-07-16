@@ -75,7 +75,7 @@ const App = () => {
       zip: ''
     }
   })
-  const [infoShown, setInfoShown] = useState(true)
+  const [infoShown, setInfoShown] = useState(false)
 
   useEffect(getFonts, [])
 

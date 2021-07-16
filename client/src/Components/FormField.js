@@ -1,11 +1,20 @@
+import { useState } from 'react';
+
 const FormField = ({ label, placeholder, extraClass='', value, onChange }) => {
+    
+    const [isFocused, setIsFocused] = useState(false)
+
+    const toggleFocus = () => {
+        setIsFocused(!isFocused)
+    } 
+    
     return (
         <div className={`form-field ${extraClass}`}>
-            <div className='form-field-label'>
+            <div className={isFocused ? 'form-field-label label-focused' :'form-field-label'}>
                 <label>{label}</label>
             </div>
-            <div className='form-field-input'>
-                <input type='text' name={label} value={value} onChange={onChange} placeholder={placeholder}></input>
+            <div className={isFocused ? 'form-field-input line-focused' :'form-field-input'}>
+                <input onFocus={toggleFocus} onBlur={toggleFocus} type='text' name={label} value={value} onChange={onChange} placeholder={placeholder}></input>
             </div>
         </div>
     )

@@ -7,7 +7,7 @@ const Step5 = ({ formStep, setFormStep }) => {
     }
     
     return (
-        <div className='control-panel'>
+        <>
             <div className='success-message'>
                 <h2>Nice!</h2>
                 <p>Your t-shirt is on the way.</p>
@@ -15,7 +15,7 @@ const Step5 = ({ formStep, setFormStep }) => {
             <div className='buttons-container'>  
                     <Button label='GO AGAIN' role='select' handler={() => setFormStep(1)}/>
             </div> 
-        </div>
+        </>
     )
 }
 

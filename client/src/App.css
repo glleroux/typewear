@@ -64,6 +64,17 @@ header {
   justify-content: space-evenly;
 }
 
+.step-container {
+  width: 400px;
+  border-top: 1px solid #6d6d6d;
+  border-bottom: 1px solid #6d6d6d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease-in;
+}
+
 .control-panel {
   height: 400px;
   width: 400px;
@@ -86,10 +97,16 @@ header {
   transition: all 0.4s ease;
 }
 
+.spacer {
+  height: 40px;
+}
+
 .sizes-container {
+  padding: 18px;
   display: flex;
   flex-direction: row;
-  margin-top: 18px;
+  justify-content: center;
+  align-items: center;
 }
 
 .size-option-button {
@@ -97,6 +114,7 @@ header {
   width: 42px;
   border: 1px solid #6d6d6d;
   margin: 6px;
+  margin-top: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -140,7 +158,8 @@ header {
   text-align: center;
 }
 
-.control-font-container {
+.font-container {
+  height: 200px;
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -152,23 +171,20 @@ header {
 }
 
 .buttons-container {
+  padding: 18px;
+  margin-top: auto;
   display: flex;
   justify-content: center;
 }
 
-.button {
-  width: 90px;
+button {
   height: 40px;
-  margin: 18px;
+  padding: 12px 24px;
+  margin: 0 8px;
   border: 1px solid #6d6d6d;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-#button {
-  padding: none;
-  border: none;
 }
 
 .button-text {
@@ -196,9 +212,7 @@ header {
 }
 
 .form-container {
-  height: 400px;
-  width: 400px;
-  padding: 24px 32px;
+  padding-top: 24px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -235,6 +249,14 @@ header {
   width: 336px;
 }
 
+.label-focused {
+  color: #f05a47;
+}
+
+.line-focused {
+  border-color: #f05a47;
+}
+
 .two-field-container {
   display: flex;
   flex-direction: row;
@@ -252,10 +274,6 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-#stripe-input {
-  margin-top: 132px;
 }
 
 .StripeElement {

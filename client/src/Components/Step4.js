@@ -8,11 +8,11 @@ const Step4 = ({ formStep, setFormStep, order }) => {
     }
     
     return (
-        <div className='control-panel'>
+        <>
             <div className='form-container'>
                 <StripeContainer setFormStep={setFormStep} order={order}/>
             </div> 
-        </div>
+        </>
     )
 }
 
