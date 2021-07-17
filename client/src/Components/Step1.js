@@ -9,7 +9,7 @@ const Step1 = ({ formStep, handleChangeSource, sizes, font, handlePrevNext, hand
     }
     return (
         <>
-        <Sources handleChangeSource={handleChangeSource} sizes={sizes}/>
+        {/* <Sources handleChangeSource={handleChangeSource} sizes={sizes}/> */}
         <Font containerClass={'font-container'} font={font}/>
         <div className='buttons-container'>
             <Button label='PREV' role='' handler={handlePrevNext}/>
