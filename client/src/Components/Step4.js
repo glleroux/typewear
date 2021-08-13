@@ -1,5 +1,6 @@
 import StripeContainer from "./StripeContainer"
 import Button from './Button'
+import StepContainer from "./StepContainer"
 
 const Step4 = ({ formStep, setFormStep, order }) => {
     
@@ -8,11 +9,11 @@ const Step4 = ({ formStep, setFormStep, order }) => {
     }
     
     return (
-        <>
-            <div className='form-container'>
+        <StepContainer name='/ payment'>
+            <div className='step-content'>
                 <StripeContainer setFormStep={setFormStep} order={order}/>
-            </div> 
-        </>
+            </div>
+        </StepContainer>
     )
 }
 

@@ -98,11 +98,11 @@ const PaymentForm = ({ setFormStep, order, options }) => {
     }
 
         return (
-            <form id="stripe-input" onSubmit={handleSubmit} style={{ maxWidth: 304 }}>
+            <form id="stripe-input" onSubmit={handleSubmit} style={{ maxWidth: 400 }}>
                 <CardElement options={cardStyle }/>
                 <div className='buttons-container'>
                     <Button label='BACK' handler={() => setFormStep(3)}/>   
-                    <button className='button select'><p className='button-text'>PAY</p></button>
+                    <button className='button'><p className='button-text'>PAY £29</p></button>
                 </div>
             </form>
             

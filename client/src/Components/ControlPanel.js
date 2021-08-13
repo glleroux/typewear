@@ -39,7 +39,7 @@ const ControlPanel = ({ font, handlePrevNext, handleChangeSource, sizes, formSte
   }
 
   return (
-    <div className='step-container'>
+    <>
       <Step1
         formStep={formStep}
         handleChangeSource={handleChangeSource}
@@ -70,7 +70,7 @@ const ControlPanel = ({ font, handlePrevNext, handleChangeSource, sizes, formSte
         formStep={formStep}
         setFormStep={setFormStep}
         />
-    </div>
+    </>
   )
 }
 
