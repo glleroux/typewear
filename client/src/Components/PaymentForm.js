@@ -3,9 +3,9 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import Button from './Button'
 import axios from 'axios'
 
-const order = {
-    "Font": "pattaya"
-}
+// const order = {
+//     "Font": "pattaya"
+// }
 
 const sendOrder = async (order) => {
 
