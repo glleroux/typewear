@@ -1,6 +1,6 @@
 import Button from './Button';
 
-const ProductInfo = () => {
+const ProductInfo = ({ backHandler }) => {
     return (
       <>
       <div className="backdrop">
@@ -10,11 +10,11 @@ const ProductInfo = () => {
         </div>
         {/* <InfoOutlinedIcon /> */}
         <div className='buttons-container'>  
-                    <Button label='PRODUCT INFO' role='select'/>
+            <Button label='BACK' role='select' handler={backHandler}/>
         </div> 
       </div>
       </>
     )  
 }
 
-export default ResultPanel
+export default ProductInfo
