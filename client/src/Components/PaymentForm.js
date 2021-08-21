@@ -3,10 +3,6 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import Button from './Button'
 import axios from 'axios'
 
-// const order = {
-//     "Font": "pattaya"
-// }
-
 const sendOrder = async (order) => {
 
     console.log("sending", order)
@@ -28,6 +24,34 @@ const sendOrder = async (order) => {
             'Authorization': "Bearer key8WopV2OEIOtCou"
         }
     })
+
+    await axios.post("http://localhost:8080/order", order)
+
+    // await axios.post(`https://api.printful.com/orders/`, {
+    //     "recipient": {
+    //         "name": name,
+    //         "address1": address,
+    //         "city": city,
+    //         "state_code": state,
+    //         "country_code": "",
+    //         "zip": zip
+    //     },
+    //     "items": [
+    //         {
+    //             "variant_id": 11865,
+    //             "quantity": 1,
+    //             "files": [
+    //                 {
+    //                     "url": "https://picsum.photos/200"
+    //                 }
+    //             ]
+    //         }
+    //     ]
+    // }, {
+    //     headers: {
+    //         "Authorization": "Basic N2lkOTFuYnItbTlkZC1lM3RvOjBidmcteGMzOWU4OXUybG85"
+    //     }
+    // })
 }
 
 const PaymentForm = ({ setFormStep, order, options }) => {
