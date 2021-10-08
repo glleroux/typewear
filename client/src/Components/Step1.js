@@ -18,7 +18,6 @@ const Step1 = ({ formStep, handleChangeSource, sizes, font, handlePrevNext, hand
                 <Button label='THIS ONE' role='select' handler={handleFontSelect}/>
                 <Button label='NEXT' role='' handler={handlePrevNext}/>    
             </div>
-            {/* <ButtonSet handlePrevNext={handlePrevNext} handleFontSelect={handleFontSelect}/> */}
         </StepContainer>
     )
 }

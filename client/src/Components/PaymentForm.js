@@ -1,62 +1,9 @@
-import { React, useState } from 'react';
+import { React } from 'react';
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import Button from './Button'
 import axios from 'axios'
 
-const sendOrder = async (order) => {
-
-    console.log("sending", order)
-
-    const {font, size} = order
-    const {name, email, address, city, state, zip} = order.info
-    const shippingAddress = `${address}, ${city}, ${state}, ${zip}` 
-
-    await axios.post(`https://api.airtable.com/v0/app6svFgRrfkw1py9/Orders`, {
-        "fields": {
-            "Name": name,
-            "Email": email,
-            "Font": font,
-            "Size": size,
-            "Address": shippingAddress
-        }
-    }, {
-        headers: {
-            'Authorization': "Bearer key8WopV2OEIOtCou"
-        }
-    })
-
-    await axios.post("http://localhost:8080/order", order)
-
-    // await axios.post(`https://api.printful.com/orders/`, {
-    //     "recipient": {
-    //         "name": name,
-    //         "address1": address,
-    //         "city": city,
-    //         "state_code": state,
-    //         "country_code": "",
-    //         "zip": zip
-    //     },
-    //     "items": [
-    //         {
-    //             "variant_id": 11865,
-    //             "quantity": 1,
-    //             "files": [
-    //                 {
-    //                     "url": "https://picsum.photos/200"
-    //                 }
-    //             ]
-    //         }
-    //     ]
-    // }, {
-    //     headers: {
-    //         "Authorization": "Basic N2lkOTFuYnItbTlkZC1lM3RvOjBidmcteGMzOWU4OXUybG85"
-    //     }
-    // })
-}
-
 const PaymentForm = ({ setFormStep, order, options }) => {
-
-    const [success, setSuccess] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
 
@@ -109,8 +56,8 @@ const PaymentForm = ({ setFormStep, order, options }) => {
 
                 if (response.data.success) {
                     console.log("successful payment")
-                    setSuccess(true)
                     setFormStep(5)
+                    //generate URI?
                     sendOrder(order)
                 }
             } catch (error) {
@@ -121,33 +68,20 @@ const PaymentForm = ({ setFormStep, order, options }) => {
         }
     }
 
-        return (
-            <form id="stripe-input" onSubmit={handleSubmit} style={{ maxWidth: 400 }}>
-                <CardElement options={cardStyle }/>
-                <div className='buttons-container'>
-                    <Button label='BACK' handler={() => setFormStep(3)}/>   
-                    <button className='button'><p className='button-text'>PAY £29</p></button>
-                </div>
-            </form>
-            
-            //FOR LATER
-            // <>
-            // {!success ? 
-            // <form onSubmit={handleSubmit}>
-            //     <fieldset className="FormGroup">
-            //         <div className="FormRow">
-            //             <CardElement/>
-            //         </div>
-            //     </fieldset>
-            //     <button>Pay</button>
-            // </form>
-            // :
-            // <div>
-            //     <h2>Success message</h2>
-            // </div> 
-            // }
-            // </>
-        )
+    return (
+        <form id="stripe-input" onSubmit={handleSubmit} style={{ maxWidth: 400 }}>
+            <CardElement options={cardStyle }/>
+            <div className='buttons-container'>
+                <Button label='BACK' handler={() => setFormStep(3)}/>   
+                <button className='button'><p className='button-text'>PAY £29</p></button>
+            </div>
+        </form>
+    )
+}
+
+const sendOrder = async (order) => {
+    console.log("sending", order)
+    await axios.post("http://localhost:8080/order", order)
 }
 
 export default PaymentForm
