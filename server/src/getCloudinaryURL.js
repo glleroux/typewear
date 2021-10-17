@@ -23,7 +23,7 @@ const getCloudinaryURL = async (font) => {
         console.log("Generate image", Date.now() - now)
         now = Date.now()
 
-        const uploadResponse = await cloudinary.uploader.upload(imagePath)
+        const uploadResponse = await cloudinary.uploader.upload(imagePath, {use_filename: true, unique_filename: false})
         console.log("Upload image", Date.now() - now)
         now = Date.now()
 
@@ -61,7 +61,6 @@ const fontLowerCase = font.toLowerCase() //this just makes the font name lowerca
   return imagePath
 };
 
-//DOWNLOAD FONT
 const downloadFont = async (font, fontPath) => {
     const url = await getStyleSheetURL(font);
     console.log(`${font} url: `, url);
@@ -80,8 +79,8 @@ const downloadFont = async (font, fontPath) => {
     }
 }
 
-  //ACCESS FONT RESOURCE VIA @IMPORT STYLSHEET
-    const getStyleSheetURL = async (font) => {
+
+const getStyleSheetURL = async (font) => {
     const response = await axios.get(
       `https://fonts.googleapis.com/css?family=${font}`
     );
@@ -89,6 +88,6 @@ const downloadFont = async (font, fontPath) => {
     const pattern = /(?<=\()([^)]+)(?=\))/g;
     const url = styleSheet.match(pattern)[0];
     return url;
-  };
+};
 
   module.exports = getCloudinaryURL

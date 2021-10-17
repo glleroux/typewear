@@ -1,0 +1,73 @@
+axios = require('axios')
+require("dotenv").config({path:`${__dirname}/../.env`});
+
+APP_ID = process.env.INKT_APP_ID
+SECRET_KEY = process.env.INKT_SECRET_KEY
+
+const sha1 = str => {
+    const crypto = require('crypto')
+    const shasum = crypto.createHash('sha1')
+    shasum.update(str)
+
+    return shasum.digest('hex')
+}
+
+
+const createOrder = async (order, printFileURL) => {
+
+    const {font, size} = order
+
+    const {name, address, city, state, zip} = order.info
+    const firstName = name.split(' ')[0]
+    const lastName = name.split(' ')[1]
+
+    const inktOrder = {
+        "brandName": "typewear",
+        "shipping_address": {
+         "firstName": firstName,
+         "lastName": lastName,
+         "address1": address,
+         "city": city,
+         "county": state,
+         "postcode": zip,
+         "country": "United Kingdom" //need to sort
+        },
+        "shipping": {
+            "shippingMethod": "regular" //hard //need to switch this for US
+        },
+        "items": [
+            {
+                "pn": `EMB-STTU788-WHI-${size}`, 
+                "title": font,
+                "quantity": 1,
+                "retailPrice": 29, 
+                "designs": {
+                    "front": printFileURL
+                }
+            }
+        ]
+    }
+
+    const req = await axios.post('https://www.inkthreadable.co.uk/api/orders.php', inktOrder, {
+        params: {
+            AppId: APP_ID,
+            Signature: sha1(`${JSON.stringify(inktOrder)}${SECRET_KEY}`)
+        }
+    })
+
+    console.log(req.data)
+    console.log(req.data.order.items)
+}
+
+const getOrders = async () => {
+    const req = await axios.get('https://www.inkthreadable.co.uk/api/orders.php', {
+        params: {
+            AppId: APP_ID,
+            Signature: sha1(`AppId=${APP_ID}${SECRET_KEY}`)
+        }
+    })
+
+    console.log(req.data)
+}
+
+module.exports = createOrder

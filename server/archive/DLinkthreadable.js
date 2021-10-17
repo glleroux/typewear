@@ -14,7 +14,7 @@ const sha1 = str => {
 
 
 const createOrder = async (order) => {
-    const req = await axios.post('https://www.inkthreadable.co.uk/api/orders.php', order, {
+    const req = await axios.post('https://www.inkthreadable.co.uk/api/orders.php', exampleOrder, {
         params: {
             AppId: APP_ID,
             Signature: sha1(`${JSON.stringify(order)}${SECRET_KEY}`)
@@ -24,21 +24,21 @@ const createOrder = async (order) => {
     console.log(req.data)
 }
 
-const getOrders = async () => {
-    const req = await axios.get('https://www.inkthreadable.co.uk/api/orders.php', {
-        params: {
-            AppId: APP_ID,
-            Signature: sha1(`AppId=${APP_ID}${SECRET_KEY}`)
-        }
-    })
+// const getOrders = async () => {
+//     const req = await axios.get('https://www.inkthreadable.co.uk/api/orders.php', {
+//         params: {
+//             AppId: APP_ID,
+//             Signature: sha1(`AppId=${APP_ID}${SECRET_KEY}`)
+//         }
+//     })
 
-    console.log(req.data)
-}
+//     console.log(req.data)
+// }
 
 
-const order = {
-    "brandName": "typewear",
-    "comment": "rb test order.",
+const exampleOrder = {
+    "brandName": "Inkthreadable",
+    "comment": "Test order.",
     "shipping_address": {
      "firstName": "Alex",
      "lastName": "Cunliffe",
@@ -68,7 +68,4 @@ const order = {
     ]
    }
 
-// getOrders()
-createOrder(order)
-
-module.exports = createOrder
+createOrder(exampleOrder)
