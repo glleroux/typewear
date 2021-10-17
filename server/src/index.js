@@ -1,3 +1,4 @@
+const parseOrder = require('./utils/parseOrder')
 const sendOrderToAirtable = require('./utils/orderToAT')
 const searchCloudinary = require('./utils/searchCloudinary')
 const getCloudinaryURL = require('./getCloudinaryURL')
@@ -42,24 +43,19 @@ app.post("/payment", cors(), async (req, res) => {
 
 app.post("/order", async (req, res) => {
   console.log(req.body)
-  const order = req.body
-
-  const {font, size} = order
-  const {name, email, address, city, state, zip} = order.info
-  const firstName = name.split(' ')[0]
-  const lastName = name.split(' ')[1]
+  const order = parseOrder(req.body)
 
   sendOrderToAirtable(order)
   
   let printFileURL;
-  const existingCloudinaryURL = await searchCloudinary(font)
+  const existingCloudinaryURL = await searchCloudinary(order.font)
 
   if (existingCloudinaryURL) {
     printFileURL = existingCloudinaryURL
     console.log('print file already exists')
   } else {
     console.log('new print file required')
-    printFileURL = await getCloudinaryURL(font)
+    printFileURL = await getCloudinaryURL(order.font)
     console.log('new print file created')
   }
 
