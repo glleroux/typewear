@@ -44,6 +44,7 @@ app.post("/payment", cors(), async (req, res) => {
 app.post("/order", async (req, res) => {
   console.log(req.body)
   const order = parseOrder(req.body)
+  console.log('first pass: ', order)
 
   sendOrderToAirtable(order)
   

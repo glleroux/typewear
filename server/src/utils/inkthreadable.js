@@ -15,11 +15,7 @@ const sha1 = str => {
 
 const createOrder = async (order, printFileURL) => {
 
-    const {font, size} = order
-
-    const {name, address, city, state, zip} = order.info
-    const firstName = name.split(' ')[0]
-    const lastName = name.split(' ')[1]
+    const {font, size, name, address, city, state, zip, firstName, lastName} = order
 
     const inktOrder = {
         "brandName": "typewear",
