@@ -6,6 +6,7 @@ import ResultPanel from './Components/ResultPanel'
 import InfoPanel from './Components/InfoPanel'
 import Footer from './Components/Footer'
 import StripeContainer from './Components/StripeContainer'
+import Search from './Components/Search'
 
 require('dotenv').config()
 const axios = require('axios')
@@ -76,16 +77,19 @@ const App = () => {
     }
   })
   const [infoShown, setInfoShown] = useState(false)
+  const [searchShown, setSearchShown] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(getFonts, [])
 
-  const dataSizes = {
+  console.log(commonFonts)
+  console.log(allFonts)
+
+  const listSizes = {
     trending: trendingFonts.length,
     common: commonFonts.length,
     all: allFonts.length
   }
-
-  console.log(dataSizes.all)
 
   //INPUT EVENT HANDLERS -- SOURCE
   const handleChangeSource = (e) => {
@@ -108,7 +112,7 @@ const App = () => {
     }
   }
    
-  //INPUT EVENT HANDLERS -- INDEX
+  //INPUT EVENT HANDLERS -- INDEX -- POTENTIALLY REMOVE
   const handlePrevNext = (e) => {
     console.log(e.target)
     const dataSize = fontsToBeDisplayed.data.length
@@ -132,17 +136,24 @@ const App = () => {
   return (
     <div className="page-container">
       <Header />
+      {searchShown && <Search 
+        setSearchShown={setSearchShown}
+        searchQuery={searchQuery} 
+        setSearchQuery={setSearchQuery}
+        listSizes={listSizes}
+        fonts={fontsToBeDisplayed}
+        />}
       <div className="content-wrapper">
         {allFonts ? 
           <ControlPanel 
           font={fontsToBeDisplayed.data[fontIndex]} 
           handlePrevNext={handlePrevNext} 
           handleChangeSource={handleChangeSource} 
-          sizes={dataSizes}
           formStep={formStep}
           setFormStep={setFormStep}
           order={order}
           setOrder={setOrder}
+          setSearchShown={setSearchShown}
           />
           : <div></div>}
         {infoShown ? <InfoPanel setInfoShown={setInfoShown}/> : <ResultPanel font={fontsToBeDisplayed.data[fontIndex]}/>}
