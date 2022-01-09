@@ -42,6 +42,10 @@ header {
   height: 64px;
 }
 
+#home-link {
+  text-decoration: none;
+}
+
 .logo {
   font-family: "sk-modernistbold";
   color: #363636;
@@ -170,12 +174,19 @@ header {
 }
 
 .source {
-  width: 133.33px;
+  margin: 0 16px;
 }
 
 .source-text {
   font-family: "sk-modernistmono";
-  color: #363636;
+  color: #6d6d6d;
+  font-size: 12px;
+  text-align: center;
+}
+
+.source-text-active {
+  font-family: "sk-modernistmono";
+  color: #f05a47;
   font-size: 12px;
   text-align: center;
 }
@@ -185,10 +196,6 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.font-family {
-  user-select: none;
 }
 
 .buttons-container {
@@ -207,6 +214,34 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#CONFIRM {
+  height: 40px;
+  padding: 12px 24px;
+  margin: 0 8px;
+  border: 1px solid #6d6d6d;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #3a3a3a;
+}
+
+#CONFIRM:hover {
+  height: 40px;
+  padding: 12px 24px;
+  margin: 0 8px;
+  border: none;
+  background-color: #f05a47;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+
+#hidden {
+  visibility: hidden;
 }
 
 .button-text {
@@ -272,6 +307,13 @@ button {
 
 .line-focused {
   border-color: #f05a47;
+}
+
+.form-field-sources {
+  height: 32px;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #6d6d6d;
 }
 
 .two-field-container {
@@ -379,10 +421,20 @@ button {
   letter-spacing: 2px;
   margin: 0;
   color: #3a3a3a;
+  user-select: none;
+}
+
+.font-family-small {
+  font-size: 28px;
+  letter-spacing: 0.7px;
+  margin: 0;
+  color: #3a3a3a;
+  user-select: none;
 }
 
 .modal {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: fixed; /* Stay in place */
@@ -390,8 +442,8 @@ button {
   left: 0;
   top: 0;
   width: 100%; /* Full width */
-  height: 100vh;
-  /* overflow: auto; Enable scroll if needed */
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
 }
@@ -400,9 +452,10 @@ button {
   background-color: #f5f5f5;
   padding: 32px;
   border: 1px solid #888;
-  max-width: 1000px; /* Could be more or less, depending on screen size */
+  max-width: 1000px;
   width: 75%;
-  height: 75%;
+  height: 80%;
+  margin-bottom: 24px;
 }
 
 .search-container {
@@ -422,7 +475,7 @@ button {
 }
 
 .search-inputs-container {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -430,11 +483,15 @@ button {
 
 .search-results-container {
   flex-grow: 2;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-auto-rows: 33%;
-  grid-gap: 22px;
   overflow: auto;
+}
+
+.search-results-grid {
+  height: 50vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-rows: 30%;
+  grid-gap: 16px;
 }
 
 .search-results-container::-webkit-scrollbar {
@@ -449,9 +506,26 @@ button {
 
 .search-result {
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
   font-size: 30px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+}
+
+.search-result-active {
+  background-color: rgb(240, 90, 71, 0.1);
+  font-size: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  box-shadow: inset 0 0 0 2px rgb(240, 90, 71, 0.8);
+  transition: all 0.4s ease;
 }
 
 footer {

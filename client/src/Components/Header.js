@@ -1,7 +1,9 @@
 const Header = () => {
     return (
       <header>
-        <h1 className="logo">typewear <span className="logo-bar">|</span></h1>
+        <a id="home-link" href="http://localhost:3000/">
+          <h1 className="logo">typewear <span className="logo-bar">|</span></h1>
+        </a>
         <p className="strap">TURN OPEN-SOURCE TYPEFACES INTO STREETWEAR</p>
       </header>
     )

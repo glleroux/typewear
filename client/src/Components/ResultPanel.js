@@ -1,6 +1,5 @@
 import resultImage from '../assets/result2.png'
 import Font from './Font'
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import Button from './Button';
 import ProductInfo from './ProductInfo';
 import { useState } from 'react';
