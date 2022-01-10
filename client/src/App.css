@@ -542,3 +542,55 @@ footer {
   font-size: 12px;
   margin: 0;
 }
+
+/* GOOGLE PLACES AUTOCOMPLETE */
+
+/* #listbox {
+  padding: 1rem 1.2rem;
+  width: 15rem;
+  border: 5px solid;
+  outline: none;
+  font-weight: bold;
+  line-height: 1.5;
+  width: 20rem;
+} */
+
+#ex-list-box {
+  position: absolute;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  max-height: 60%;
+  /* border: 5px solid;
+  border-top: none; */
+  list-style-type: none;
+  text-align: left;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, 1);
+  width: 336px;
+  box-shadow: 7px 10px 35px 0px rgba(0, 0, 0, 0.37);
+}
+
+.ex-list-item {
+  width: 336px;
+  cursor: pointer;
+  padding: 0.5rem 2px;
+  font-family: "sk-modernistregular";
+  font-size: 12px;
+  color: #3a3a3a;
+}
+
+.ex-list-item-darken {
+  width: 15rem;
+  cursor: pointer;
+  width: 336px;
+  padding: 0.5rem 2px;
+  font-family: "sk-modernistregular";
+  font-size: 12px;
+  background-color: #f5e5e3;
+}
+
+.sub-text {
+  margin-left: 0.5rem;
+  color: #8c8c8c;
+}

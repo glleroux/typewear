@@ -1,9 +1,13 @@
 import FormField from './FormField'
 import Button from './Button'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import StepContainer from './StepContainer'
+import PlacesAutocomplete from "./PlacesAutocomplete";
+
 
 const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAddressValue }) => {
+
+    const [isGPlacesFocused, setIsGPlacesFocused] = useState(false)
 
     const onChange = (e) => {
         const key = e.target.name
@@ -14,18 +18,25 @@ const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAd
         return null
     }
 
+    const toggleGPlacesFocus = () => {
+        setIsGPlacesFocused(!isGPlacesFocused)
+    } 
+
     return (
         <StepContainer name='/ shipping'>
             <div className='step-content'>
                 <div className='form-container'>
                     <FormField label='name' placeholder='Gordon Bombay' value={addressValue.name} onChange={onChange}/>
-                    <FormField label='email'placeholder='gordon@themightyducks.com' value={addressValue.email} onChange={onChange}/>
-                    <FormField label='address'placeholder='Peavey Park' value={addressValue.address} onChange={onChange}/>
-                    <FormField label='city' placeholder='Minneapolis' value={addressValue.city} onChange={onChange}/>
-                    <div className='two-field-container'>
-                        <FormField label='state' placeholder='MN' extraClass='field-short' value={addressValue.state} onChange={onChange}/>
-                        <FormField label='zip' placeholder='55404' extraClass='field-short' value={addressValue.zip} onChange={onChange}/>
+                    <FormField label='email'placeholder='gordon@themightyducks.com' value={addressValue.email} onChange={onChange}/>    
+                    <div className={`form-field`}>
+                        <div className={isGPlacesFocused ? 'form-field-label label-focused' :'form-field-label'}>
+                            <label>address</label>
+                        </div>
+                        <div className={isGPlacesFocused ? 'form-field-input line-focused' :'form-field-input'}>
+                            <PlacesAutocomplete toggleGPlacesFocus={toggleGPlacesFocus} isGPlacesFocused={isGPlacesFocused}/>
+                        </div>
                     </div>
+            
                 </div>
             </div>
             <div className='buttons-container'>
