@@ -73,7 +73,7 @@ const PaymentForm = ({ setFormStep, order, options }) => {
             <CardElement options={cardStyle }/>
             <div className='buttons-container'>
                 <Button label='BACK' handler={() => setFormStep(3)}/>   
-                <button className='button'><p className='button-text'>PAY £29</p></button>
+                <button className='button'>PAY £29</button>
             </div>
         </form>
     )

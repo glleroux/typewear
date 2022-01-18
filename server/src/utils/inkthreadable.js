@@ -26,7 +26,7 @@ const createOrder = async (order, printFileURL) => {
          "city": city,
          "county": state,
          "postcode": zip,
-         "country": "United Kingdom" //need to sort
+         "country": "France" //need to sort
         },
         "shipping": {
             "shippingMethod": "regular" //hard //need to switch this for US
@@ -53,17 +53,20 @@ const createOrder = async (order, printFileURL) => {
 
     console.log(req.data)
     console.log(req.data.order.items)
+
+    return req.data.order.id
 }
 
 const getOrders = async () => {
     const req = await axios.get('https://www.inkthreadable.co.uk/api/orders.php', {
         params: {
-            AppId: APP_ID,
+            AppId: 'APP-00205121',
             Signature: sha1(`AppId=${APP_ID}${SECRET_KEY}`)
         }
     })
 
     console.log(req.data)
+    console.log(req.data.orders[0])
 }
 
 module.exports = createOrder

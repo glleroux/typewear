@@ -50,6 +50,7 @@ const ControlPanel = ({ font, formStep, setFormStep, order, setOrder, setSearchS
         formStep={formStep}
         setFormStep={setFormStep}
         setSelectedSize={setSelectedSize}
+        selectedSize={selectedSize}
         handleSizeChoice={handleSizeChoice}
         />
       <Step3

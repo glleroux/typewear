@@ -2,7 +2,7 @@ import SizeList from '../Components/SizeList'
 import Button from '../Components/Button'
 import StepContainer from './StepContainer'
 
-const Step2 = ({ formStep, setFormStep, setSelectedSize, handleSizeChoice }) => {
+const Step2 = ({ formStep, setFormStep, setSelectedSize, selectedSize, handleSizeChoice }) => {
     if (formStep !== 2) {
         return null
     }
@@ -10,7 +10,7 @@ const Step2 = ({ formStep, setFormStep, setSelectedSize, handleSizeChoice }) => 
     return (
         <StepContainer name='/ choose size'>
             <div className='step-content'>
-                <SizeList setSelectedSize={setSelectedSize}/>
+                <SizeList setSelectedSize={setSelectedSize} selectedSize={selectedSize}/>
             </div>
             <div className='buttons-container'>
                 <Button label='BACK' handler={() => setFormStep(1)}/>

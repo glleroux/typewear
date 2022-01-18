@@ -1,8 +1,7 @@
 import FormField from "./FormField"
-import Sources2 from "./Sources2"
+import Sources from "./Sources"
 import SearchResult from "./SearchResult"
 import Button from './Button'
-import { useState } from "react"
 
 const Search = ({ setSearchShown, searchQuery, setSearchQuery, sourceLengths, selectedSource, handleChangeSource, selectedResult, setSelectedResult, setDisplayedFont }) => {
 
@@ -49,7 +48,7 @@ const Search = ({ setSearchShown, searchQuery, setSearchQuery, sourceLengths, se
                     <div className='search-content'>
                         <div className='search-inputs-container'>
                             <FormField label='SEARCH' placeholder='eg. Poppins' value={searchQuery} onChange={onChange} style={style}/>
-                            <Sources2 label='SOURCE' selectedSource={selectedSource} handleChangeSource={handleChangeSource} sourceLengths={sourceLengths}/>
+                            <Sources label='SOURCE' selectedSource={selectedSource} handleChangeSource={handleChangeSource} sourceLengths={sourceLengths}/>
                         </div>
                         <div className='search-results-container'>
                             <div className='search-results-grid'>

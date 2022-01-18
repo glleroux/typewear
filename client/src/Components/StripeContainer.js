@@ -8,13 +8,8 @@ const stripeTestPromise = loadStripe(PUBLIC_KEY)
 
 const StripeContainer = ({setFormStep, order}) => {
 
-    const fonts = {
-            src: "url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap')",
-            family: "roboto-mono",
-          }
-
     return (
-        <Elements stripe={stripeTestPromise} fonts={fonts}>
+        <Elements stripe={stripeTestPromise}>
             <PaymentForm setFormStep={setFormStep} order={order}/>
         </Elements>
     )

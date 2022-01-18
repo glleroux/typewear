@@ -62,7 +62,8 @@ app.post("/order", async (req, res) => {
 
   //SEND TO FULFILMENT
     try {
-    await createOrder(order, printFileURL)
+    const orderId = await createOrder(order, printFileURL)
+    console.log(orderId)
     res.json('order submitted')  
   } catch (error) {
     console.log(error.data)

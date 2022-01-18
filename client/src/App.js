@@ -6,6 +6,8 @@ import ResultPanel from './Components/ResultPanel'
 import InfoPanel from './Components/InfoPanel'
 import Footer from './Components/Footer'
 import Search from './Components/Search'
+import filterFontFamilies from './utils/filter_missing_fonts'
+import StepLoading from './Components/StepLoading'
 
 require('dotenv').config()
 const axios = require('axios')
@@ -18,14 +20,19 @@ const App = () => {
     const responseAll = await axios.get(`https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_KEY}`)
     const fontObjectsAll = responseAll.data.items
     const fontNamesAll = fontObjectsAll.map(font => font.family)
-    console.log('fontnamesall: ', fontNamesAll)
-    await setAllFonts(allFonts.concat(fontNamesAll))
+    const filteredFontNamesAll = await filterFontFamilies(fontNamesAll)
+    console.log('unfiltered: ', fontNamesAll.length)
+    console.log('filtered: ', filteredFontNamesAll.length)
+    await setAllFonts(allFonts.concat(filteredFontNamesAll))
     console.log("all fonts got")
 
     const responseCommon = await axios.get(`https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_KEY}&sort=popularity`)
     const fontObjectsCommon = responseCommon.data.items
     const fontNamesCommon = fontObjectsCommon.map(font => font.family).slice(0,200)
-    await setCommonFonts(commonFonts.concat(fontNamesCommon))
+    const filteredFontNamesCommon = await filterFontFamilies(fontNamesCommon)
+    console.log('unfiltered: ', fontNamesCommon.length)
+    console.log('filtered: ', filteredFontNamesCommon.length)
+    await setCommonFonts(commonFonts.concat(filteredFontNamesCommon))
     console.log("common fonts got")
   }
 
@@ -33,9 +40,7 @@ const App = () => {
   const trendingFonts = [
     'Pattaya',
     "Work Sans",
-    "Newsreader",
     'Changa',
-    'Sarawabi Mincho',
     'Averia Libre',
     'Anton',
     'Pacifico',
@@ -45,14 +50,10 @@ const App = () => {
     'Unkempt',
     'Sunshiney',
     'Staatliches',
-    'Sora',
     'Quattrocento',
-    'Public Sans',
     'Overlock',
     'Nokora',
-    'Girassol',
     'Fenix',
-    'David Libre',
     'Cormorant',
     'Belgrano',
     'Amiko'
@@ -141,7 +142,10 @@ const App = () => {
           font={displayedFont}
         />}
       </div>
-      : <div className='content-wrapper'><p>loading</p></div>}
+      : <div className='content-wrapper'>
+          <StepLoading />
+          <StepLoading />
+        </div>}
       <Footer />
     </div>
   )

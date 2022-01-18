@@ -1,6 +1,6 @@
-import FontSource from '../Components/FontSource'
+import FontSource from './FontSource'
 
-const Sources2 = ({ label, handleChangeSource, selectedSource, sourceLengths}) => {
+const Sources = ({ label, handleChangeSource, selectedSource, sourceLengths}) => {
     
     return (
         <div className='form-field'>
@@ -16,4 +16,4 @@ const Sources2 = ({ label, handleChangeSource, selectedSource, sourceLengths}) =
     )
 }
 
-export default Sources2
+export default Sources

@@ -151,10 +151,29 @@ header {
   border: 1px solid #3b3b3b;
 }
 
+.size-option-button-active {
+  box-shadow: inset 0 0 0 2px rgb(240, 90, 71, 0.8);
+  background-color: rgb(240, 90, 71, 0.1);
+  transition: all 0.4s ease;
+  height: 56px;
+  width: 56px;
+  margin: 8px;
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .size-option-text {
   font-family: "sk-modernistregular";
   font-size: 18px;
   color: #6d6d6d;
+}
+
+.size-option-text-active {
+  font-family: "sk-modernistregular";
+  font-size: 18px;
+  color: #3a3a3a;
 }
 
 .size-option-select {
@@ -232,7 +251,19 @@ button {
   height: 40px;
   padding: 12px 24px;
   margin: 0 8px;
-  border: none;
+  border: 1px solid #f05a47;
+  background-color: #f05a47;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+
+button:hover {
+  height: 40px;
+  padding: 12px 24px;
+  margin: 0 8px;
+  border: 1px solid #f05a47;
   background-color: #f05a47;
   display: flex;
   justify-content: center;
@@ -513,6 +544,10 @@ button {
   justify-content: center;
   align-items: center;
   padding: 8px;
+}
+
+.search-result:hover {
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .search-result-active {
