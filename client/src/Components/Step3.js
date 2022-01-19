@@ -3,6 +3,7 @@ import Button from './Button'
 import React, { useState } from 'react'
 import StepContainer from './StepContainer'
 import PlacesAutocomplete from "./PlacesAutocomplete";
+import { motion, AnimatePresence } from "framer-motion";
 
 
 const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAddressValue }) => {
@@ -23,27 +24,35 @@ const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAd
     } 
 
     return (
-        <StepContainer name='/ shipping'>
-            <div className='step-content'>
-                <div className='form-container'>
-                    <FormField label='name' placeholder='Gordon Bombay' value={addressValue.name} onChange={onChange}/>
-                    <FormField label='email'placeholder='gordon@themightyducks.com' value={addressValue.email} onChange={onChange}/>    
-                    <div className={`form-field`}>
-                        <div className={isGPlacesFocused ? 'form-field-label label-focused' :'form-field-label'}>
-                            <label>address</label>
-                        </div>
-                        <div className={isGPlacesFocused ? 'form-field-input line-focused' :'form-field-input'}>
-                            <PlacesAutocomplete toggleGPlacesFocus={toggleGPlacesFocus} isGPlacesFocused={isGPlacesFocused}/>
+        <AnimatePresence>
+            <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            >
+                <StepContainer name='/ shipping'>
+                    <div className='step-content'>
+                        <div className='form-container'>
+                            <FormField label='name' placeholder='Gordon Bombay' value={addressValue.name} onChange={onChange}/>
+                            <FormField label='email'placeholder='gordon@themightyducks.com' value={addressValue.email} onChange={onChange}/>    
+                            <div className={`form-field`}>
+                                <div className={isGPlacesFocused ? 'form-field-label label-focused' :'form-field-label'}>
+                                    <label>address</label>
+                                </div>
+                                <div className={isGPlacesFocused ? 'form-field-input line-focused' :'form-field-input'}>
+                                    <PlacesAutocomplete toggleGPlacesFocus={toggleGPlacesFocus} isGPlacesFocused={isGPlacesFocused}/>
+                                </div>
+                            </div>
+                    
                         </div>
                     </div>
-            
-                </div>
-            </div>
-            <div className='buttons-container'>
-                <Button label='BACK' handler={() => setFormStep(2)}/>   
-                <Button label='CONTINUE' role='select' handler={() => handleAddressSubmit()}/>
-            </div>
-        </StepContainer>
+                    <div className='buttons-container'>
+                        <Button label='BACK' handler={() => setFormStep(2)}/>   
+                        <Button label='CONTINUE' role='select' handler={() => handleAddressSubmit()}/>
+                    </div>
+                </StepContainer>
+            </motion.div>
+        </AnimatePresence>
     )
 
 }

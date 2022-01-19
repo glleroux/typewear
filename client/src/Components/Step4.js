@@ -1,6 +1,6 @@
 import StripeContainer from "./StripeContainer"
-import Button from './Button'
 import StepContainer from "./StepContainer"
+import { motion, AnimatePresence } from "framer-motion";
 
 const Step4 = ({ formStep, setFormStep, order }) => {
     
@@ -9,11 +9,19 @@ const Step4 = ({ formStep, setFormStep, order }) => {
     }
     
     return (
-        <StepContainer name='/ payment'>
-            <div className='step-content'>
-                <StripeContainer setFormStep={setFormStep} order={order}/>
-            </div>
-        </StepContainer>
+        <AnimatePresence>
+            <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            >
+                <StepContainer name='/ payment'>
+                    <div className='step-content'>
+                        <StripeContainer setFormStep={setFormStep} order={order}/>
+                    </div>
+                </StepContainer>
+            </motion.div>
+        </AnimatePresence>
     )
 }
 
