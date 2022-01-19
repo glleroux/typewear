@@ -11,7 +11,7 @@ const Size = ({label, setSelectedSize, isActive}) => {
   
     return (
       <div className={isActive ? 'size-option-button-active' : 'size-option-button'} id={label} onClick={handleSizeClick}>
-        <p className={isActive ? 'size-option-text-active' : 'size-option-text'}>{label}</p>
+        <p id={label} className={isActive ? 'size-option-text-active' : 'size-option-text'} onClick={handleSizeClick}>{label}</p>
       </div>
     )
   
