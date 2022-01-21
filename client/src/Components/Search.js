@@ -36,8 +36,7 @@ const Search = ({ setSearchShown, searchQuery, setSearchQuery, sourceLengths, se
     const style = {
         backgroundColor: '#f5f5f5'
     }
-
-    console.log(selectedSource)
+    
     let fontsToShow = selectedSource.data.filter(font => font.toLowerCase().includes(searchQuery))
 
     return (

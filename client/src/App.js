@@ -21,8 +21,6 @@ const App = () => {
     const fontObjectsAll = responseAll.data.items
     const fontNamesAll = fontObjectsAll.map(font => font.family)
     const filteredFontNamesAll = await filterFontFamilies(fontNamesAll)
-    console.log('unfiltered: ', fontNamesAll.length)
-    console.log('filtered: ', filteredFontNamesAll.length)
     await setAllFonts(allFonts.concat(filteredFontNamesAll))
     console.log("all fonts got")
 
@@ -30,8 +28,6 @@ const App = () => {
     const fontObjectsCommon = responseCommon.data.items
     const fontNamesCommon = fontObjectsCommon.map(font => font.family).slice(0,200)
     const filteredFontNamesCommon = await filterFontFamilies(fontNamesCommon)
-    console.log('unfiltered: ', fontNamesCommon.length)
-    console.log('filtered: ', filteredFontNamesCommon.length)
     await setCommonFonts(commonFonts.concat(filteredFontNamesCommon))
     console.log("common fonts got")
   }
@@ -87,9 +83,9 @@ const App = () => {
   const [selectedResult, setSelectedResult] = useState(null)
   const [displayedFont, setDisplayedFont] = useState('Pattaya')
 
-  console.log('common: ', commonFonts)
-  console.log('all: ', allFonts)
-  console.log('trending:', trendingFonts)
+  // console.log('common: ', commonFonts)
+  // console.log('all: ', allFonts)
+  // console.log('trending:', trendingFonts)
 
   const sourceLengths = {
     trending: trendingFonts.length,
@@ -103,7 +99,6 @@ const App = () => {
     setSelectedResult(null)
     switch (e.target.id) {
       case 'TRENDING' :
-        console.log(`fonts now trending`)
         setSelectedSource({name: 'trending', data: [...trendingFonts]})
         break
       case 'COMMON' :

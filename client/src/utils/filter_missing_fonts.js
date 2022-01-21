@@ -22,24 +22,52 @@ const fontIsFoundInCSSFile = async (fontFamily, cssFile) => {
 }
 
 const filterFontFamilies = async (arr) => {
+
+    let name = arr.length > 200 ? 'all' : 'common'
+
+    //Length when unfiltered
+    console.log(`unfiltered length (${name} fonts):`, arr.length)
+
     const cssFile = await getCSSFile()
     const boolArray = await Promise.all(arr.map(fontFamily => fontIsFoundInCSSFile(fontFamily, cssFile)))
 
-    let CSSFilteredResult = []
+    let filteredByCSS = []
     for (let i=0; i<boolArray.length; i++) {
         if (boolArray[i]) {
-            CSSFilteredResult.push(arr[i])
+            filteredByCSS.push(arr[i])
         }
     }
 
-    const manualExclusionList = ['Diplomata', 'Diplomata SC']
-    const manualFilteredResult = CSSFilteredResult.filter(fontFamily => !manualExclusionList.includes(fontFamily.id))
+    //Length when filtered
+    console.log(`filtered length (${name} fonts):`, filteredByCSS.length)
 
-    console.log('one: ', CSSFilteredResult.length)
-    console.log(CSSFilteredResult.includes('Diplomata'))
-    console.log('two: ', manualFilteredResult.length)
+    const manualExclusionList = [
+        'Diplomata', 
+        'Diplomata SC', 
+        'Syncopate',
+        'Butcherman',
+        'Medievalsharp',
+        'Metamorphous',
+        'Shojumaru',
+        'Suwannaphum',
+        'UnifrakturMaguntia',
+        'UnifrakturCook',
+        'Libre Barcode 128 Text',
+        'Libre Barcode 39',
+        'Libre Barcode 39 Text',
+        'Libre Barcode 39 Extended',
+        'Libre Barcode 39 Extended Text',
+        'Stanlinist One'
 
-    return CSSFilteredResult
+    ]
+
+    const result = filteredByCSS.filter(fontFamily => !manualExclusionList.includes(fontFamily))
+    console.log('double filtered length: ', result.length)
+
+    const temporaryFilter = result.filter(fontFamily => fontFamily.indexOf(' ') !== -1)
+    console.log('one word fonts length: ', temporaryFilter)
+
+    return result
 }
 
 export default filterFontFamilies
