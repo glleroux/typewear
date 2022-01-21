@@ -12,10 +12,13 @@ const ControlPanel = ({ font, formStep, setFormStep, order, setOrder, setSearchS
   const [addressValue, setAddressValue] = useState({
     name: '',
     email: '',
-    address: '',
+    address1: '',
+    address2: '',
     city: '',
-    state: '',
-    zip: ''
+    county: '',
+    postcode: '',
+    country: '',
+    formatted_address: ''
 })
 
   //INPUT EVENT HANDLERS -- SELECT

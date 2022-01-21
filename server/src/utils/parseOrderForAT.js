@@ -1,7 +1,6 @@
-const parseOrder = (order) => {
+const parseOrderForAT = (order) => {
     const {font, size} = order
     const {name, email, address, city, state, zip} = order.info
-    const shippingAddress = `${address}, ${city}, ${state}, ${zip}`
     const firstName = name.split(' ')[0]
     const lastName = name.split(' ')[1]
 
@@ -10,11 +9,11 @@ const parseOrder = (order) => {
         size,
         name,
         email,
-        address,
+        address1,
+        address2,
         city,
-        state,
-        zip,
-        shippingAddress,
+        county,
+        postcode,
         firstName,
         lastName
     }
@@ -22,4 +21,4 @@ const parseOrder = (order) => {
     return parsed
 }
 
-module.exports = parseOrder
+module.exports = parseOrderForAT

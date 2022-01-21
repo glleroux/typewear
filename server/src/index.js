@@ -1,8 +1,6 @@
-const parseOrder = require('./utils/parseOrder')
-const sendOrderToAirtable = require('./utils/orderToAT')
 const searchCloudinary = require('./utils/searchCloudinary')
 const getCloudinaryURL = require('./getCloudinaryURL')
-const createOrder = require('./utils/inkthreadable')
+const sendOrder = require('./utils/sendOrder')
 const express = require("express");
 const app = express();
 require("dotenv").config({path:`${__dirname}/../.env`});
@@ -43,10 +41,7 @@ app.post("/payment", cors(), async (req, res) => {
 
 app.post("/order", async (req, res) => {
   console.log(req.body)
-  const order = parseOrder(req.body)
-  console.log('first pass: ', order)
-
-  sendOrderToAirtable(order)
+  const order = req.body
   
   let printFileURL;
   const existingCloudinaryURL = await searchCloudinary(order.font)
@@ -62,7 +57,7 @@ app.post("/order", async (req, res) => {
 
   //SEND TO FULFILMENT
     try {
-    const orderId = await createOrder(order, printFileURL)
+    const orderId = await sendOrder(order, printFileURL)
     console.log(orderId)
     res.json('order submitted')  
   } catch (error) {

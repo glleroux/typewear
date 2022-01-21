@@ -13,23 +13,31 @@ const sha1 = str => {
 }
 
 
-const createOrder = async (order, printFileURL) => {
+const sendOrder = async (order, printFileURL) => {
+    console.log('trying here')
+    console.log(order)
+    console.log(order.font)
 
-    const {font, size, name, address, city, state, zip, firstName, lastName} = order
+    const {font, size } = order
+    const {name, address1, address2, city, county, postcode, country} = order.info
+
+    const firstName = name.split(' ')[0]
+    const lastName = name.split(' ')[1]
 
     const inktOrder = {
         "brandName": "typewear",
         "shipping_address": {
-         "firstName": firstName,
-         "lastName": lastName,
-         "address1": address,
-         "city": city,
-         "county": state,
-         "postcode": zip,
-         "country": "France" //need to sort
+         firstName: firstName,
+         lastName: lastName,
+         address1: address1,
+         address2: address2,
+         city: city,
+         county: county,
+         postcode: postcode,
+         country: country
         },
         "shipping": {
-            "shippingMethod": "regular" //hard //need to switch this for US
+            "shippingMethod": "regular"
         },
         "items": [
             {
@@ -44,6 +52,8 @@ const createOrder = async (order, printFileURL) => {
         ]
     }
 
+    console.log('trying there')
+
     const req = await axios.post('https://www.inkthreadable.co.uk/api/orders.php', inktOrder, {
         params: {
             AppId: APP_ID,
@@ -51,22 +61,22 @@ const createOrder = async (order, printFileURL) => {
         }
     })
 
-    console.log(req.data)
+    console.log('here?: ', req.data)
     console.log(req.data.order.items)
 
     return req.data.order.id
 }
 
-const getOrders = async () => {
-    const req = await axios.get('https://www.inkthreadable.co.uk/api/orders.php', {
-        params: {
-            AppId: 'APP-00205121',
-            Signature: sha1(`AppId=${APP_ID}${SECRET_KEY}`)
-        }
-    })
+// const getOrders = async () => {
+//     const req = await axios.get('https://www.inkthreadable.co.uk/api/orders.php', {
+//         params: {
+//             AppId: 'APP-00205121',
+//             Signature: sha1(`AppId=${APP_ID}${SECRET_KEY}`)
+//         }
+//     })
 
-    console.log(req.data)
-    console.log(req.data.orders[0])
-}
+//     console.log(req.data)
+//     console.log(req.data.orders[0])
+// }
 
-module.exports = createOrder
+module.exports = sendOrder

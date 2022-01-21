@@ -1,8 +1,9 @@
 import usePlacesAutocomplete, { getDetails } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 import React, { useState } from "react";
+import getAddressObject from "../utils/get_address_object";
 
-const PlacesAutocomplete = ({ toggleGPlacesFocus, isGPlacesFocused }) => {
+const PlacesAutocomplete = ({ toggleGPlacesFocus, setAddressValue, addressValue }) => {
   const [currIndex, setCurrIndex] = useState(null);
 
   const {
@@ -28,28 +29,25 @@ const PlacesAutocomplete = ({ toggleGPlacesFocus, isGPlacesFocused }) => {
     setValue(e.target.value);
   };
 
-  const handleSelect = ({ description, place_id }) => () => {
-    console.log(description);
-    console.log(place_id);
-    console.log(typeof place_id);
+  const handleSelect = ({ description, place_id }) => async () => {
 
     const parameter = {
       placeId: place_id,
       // Specify return data
-      fields: ["formatted_address"]
+      fields: ["formatted_address", "address_components"]
     };
 
-    getDetails(parameter)
-      .then((details) => {
-        console.log("Details: ", details.formatted_address);
-        setValue(details.formatted_address);
-      })
-      .catch((error) => {
-        console.log("Error: ", error);
-      });
-
-    setValue(description, false);
-    clearSuggestions();
+    try {
+      const details = await getDetails(parameter)
+      setValue(details.formatted_address);
+      const inktAddress = getAddressObject(details.address_components)
+      setAddressValue(Object.assign(addressValue,inktAddress))
+      setValue(description, false);
+      clearSuggestions();
+      console.log('state address value: ', addressValue)
+    } catch (error) {
+      console.log("Error: ", error);
+    }
   };
 
   const handleEnter = (index) => {

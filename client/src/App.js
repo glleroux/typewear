@@ -71,10 +71,13 @@ const App = () => {
     info: {
       name: '',
       email: '',
-      address: '',
+      address1: '',
+      address2: '',
       city: '',
-      state: '',
-      zip: ''
+      county: '',
+      postcode: '',
+      country: '',
+      formatted_address: ''
     }
   })
   const [infoShown, setInfoShown] = useState(false)

@@ -40,7 +40,7 @@ const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAd
                                     <label>address</label>
                                 </div>
                                 <div className={isGPlacesFocused ? 'form-field-input line-focused' :'form-field-input'}>
-                                    <PlacesAutocomplete toggleGPlacesFocus={toggleGPlacesFocus} isGPlacesFocused={isGPlacesFocused}/>
+                                    <PlacesAutocomplete toggleGPlacesFocus={toggleGPlacesFocus} isGPlacesFocused={isGPlacesFocused} addressValue={addressValue} setAddressValue={setAddressValue}/>
                                 </div>
                             </div>
                     

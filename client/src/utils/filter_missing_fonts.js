@@ -25,13 +25,21 @@ const filterFontFamilies = async (arr) => {
     const cssFile = await getCSSFile()
     const boolArray = await Promise.all(arr.map(fontFamily => fontIsFoundInCSSFile(fontFamily, cssFile)))
 
-    let result = []
+    let CSSFilteredResult = []
     for (let i=0; i<boolArray.length; i++) {
         if (boolArray[i]) {
-            result.push(arr[i])
+            CSSFilteredResult.push(arr[i])
         }
     }
-    return result
+
+    const manualExclusionList = ['Diplomata', 'Diplomata SC']
+    const manualFilteredResult = CSSFilteredResult.filter(fontFamily => !manualExclusionList.includes(fontFamily.id))
+
+    console.log('one: ', CSSFilteredResult.length)
+    console.log(CSSFilteredResult.includes('Diplomata'))
+    console.log('two: ', manualFilteredResult.length)
+
+    return CSSFilteredResult
 }
 
 export default filterFontFamilies
