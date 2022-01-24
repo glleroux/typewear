@@ -209,6 +209,7 @@ header {
 
 .source {
   margin: 0 16px;
+  cursor: default;
 }
 
 .source-text {
@@ -223,6 +224,15 @@ header {
   color: #f05a47;
   font-size: 12px;
   text-align: center;
+}
+
+.source-active {
+  margin: 0 16px;
+  border-bottom: #f05a47 1px solid;
+}
+
+.source:hover {
+  border-bottom: #8c8c8c 1px solid;
 }
 
 .font-container {
@@ -563,6 +573,11 @@ button:hover {
 
 .search-result:hover {
   background-color: rgba(255, 255, 255, 0.4);
+}
+
+.trending-emoji {
+  align-self: flex-end;
+  margin: 0;
 }
 
 .search-result-active {

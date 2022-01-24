@@ -3,7 +3,17 @@ import Sources from "./Sources"
 import SearchResult from "./SearchResult"
 import Button from './Button'
 
-const Search = ({ setSearchShown, searchQuery, setSearchQuery, sourceLengths, selectedSource, handleChangeSource, selectedResult, setSelectedResult, setDisplayedFont }) => {
+const Search = ({ 
+    setSearchShown, 
+    searchQuery, 
+    setSearchQuery, 
+    sourceLengths, 
+    selectedSource, 
+    handleChangeSource, 
+    selectedResult, 
+    setSelectedResult, 
+    setDisplayedFont, 
+    trendingFonts }) => {
 
     const handleSearchResultClick = (e) => {
         console.log(e.target.id)
@@ -36,7 +46,7 @@ const Search = ({ setSearchShown, searchQuery, setSearchQuery, sourceLengths, se
     const style = {
         backgroundColor: '#f5f5f5'
     }
-    
+
     let fontsToShow = selectedSource.data.filter(font => font.toLowerCase().includes(searchQuery))
 
     return (
@@ -46,7 +56,7 @@ const Search = ({ setSearchShown, searchQuery, setSearchQuery, sourceLengths, se
                     <p className='step-name'>/ FIND TYPEFACE</p>
                     <div className='search-content'>
                         <div className='search-inputs-container'>
-                            <FormField label='SEARCH' placeholder='eg. Poppins' value={searchQuery} onChange={onChange} style={style}/>
+                            <FormField label='SEARCH' placeholder={`eg. ${selectedSource.data[Math.floor(Math.random()*selectedSource.data.length)]}`} value={searchQuery} onChange={onChange} style={style}/>
                             <Sources label='SOURCE' selectedSource={selectedSource} handleChangeSource={handleChangeSource} sourceLengths={sourceLengths}/>
                         </div>
                         <div className='search-results-container'>
@@ -58,6 +68,7 @@ const Search = ({ setSearchShown, searchQuery, setSearchQuery, sourceLengths, se
                                         font={font} 
                                         isActive={(selectedResult === font) ? true : false}
                                         handleClick={handleSearchResultClick}
+                                        trendingFonts={trendingFonts}
                                         />)
                                 }
                             </div>

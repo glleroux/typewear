@@ -57,7 +57,9 @@ const filterFontFamilies = async (arr) => {
         'Libre Barcode 39 Text',
         'Libre Barcode 39 Extended',
         'Libre Barcode 39 Extended Text',
-        'Stanlinist One'
+        'Stanlinist One',
+        'Nokora',
+        'Content',
 
     ]
 

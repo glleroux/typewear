@@ -36,23 +36,28 @@ const App = () => {
   const trendingFonts = [
     'Pattaya',
     "Work Sans",
-    'Changa',
-    'Averia Libre',
-    'Anton',
-    'Pacifico',
-    'Wallpoet',
-    'Vollkorn',
+    'Baumans',
+    'Belgrano',
     'Unna',
-    'Unkempt',
+    'Pacifico',
+    'Farro',
+    'Junge',
+    'Lacquer',
+    'Solway',
     'Sunshiney',
     'Staatliches',
     'Quattrocento',
     'Overlock',
-    'Nokora',
     'Fenix',
-    'Cormorant',
-    'Belgrano',
-    'Amiko'
+    'Amiko',
+    'Cinzel',
+    'Chelsea Market',
+    'Chicle',
+    'Coda',
+    'Unkempt',
+    'Palanquin',
+    'Volkhov',
+    'Knewave'
   ]
 
   useEffect(getFonts, [])
@@ -79,9 +84,9 @@ const App = () => {
   const [infoShown, setInfoShown] = useState(false)
   const [searchShown, setSearchShown] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedSource, setSelectedSource] = useState({name: 'trending', data: [...trendingFonts]})
+  const [selectedSource, setSelectedSource] = useState({name: 'trending', data: [...trendingFonts].sort(() => Math.random() - 0.5)})
   const [selectedResult, setSelectedResult] = useState(null)
-  const [displayedFont, setDisplayedFont] = useState('Pattaya')
+  const [displayedFont, setDisplayedFont] = useState(selectedSource.data[Math.floor(Math.random()*selectedSource.data.length)])
 
   // console.log('common: ', commonFonts)
   // console.log('all: ', allFonts)
@@ -125,6 +130,7 @@ const App = () => {
         selectedResult={selectedResult}
         setSelectedResult={setSelectedResult}
         setDisplayedFont={setDisplayedFont}
+        trendingFonts={trendingFonts}
       />}
       {allFonts.length > 0 && commonFonts.length > 0 
       ? <div className='content-wrapper'>
