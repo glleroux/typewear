@@ -49,7 +49,7 @@ const PaymentForm = ({ setFormStep, order, options }) => {
             try {
                 const {id} = paymentMethod
                 console.log('trying')
-                const response = await axios.post("http://localhost:8080/payment", {
+                const response = await axios.post("https://typewear.herokuapp.com/payment", {
                     amount: 2999,
                     id
                 })
@@ -81,7 +81,7 @@ const PaymentForm = ({ setFormStep, order, options }) => {
 
 const sendOrder = async (order) => {
     console.log("sending", order)
-    await axios.post("http://localhost:8080/order", order)
+    await axios.post("https://typewear.herokuapp.com/order", order)
 }
 
 export default PaymentForm
