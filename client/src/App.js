@@ -22,14 +22,12 @@ const App = () => {
     const fontNamesAll = fontObjectsAll.map(font => font.family)
     const filteredFontNamesAll = await filterFontFamilies(fontNamesAll)
     await setAllFonts(allFonts.concat(filteredFontNamesAll))
-    console.log("all fonts got")
 
     const responseCommon = await axios.get(`https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_KEY}&sort=popularity`)
     const fontObjectsCommon = responseCommon.data.items
     const fontNamesCommon = fontObjectsCommon.map(font => font.family).slice(0,200)
     const filteredFontNamesCommon = await filterFontFamilies(fontNamesCommon)
     await setCommonFonts(commonFonts.concat(filteredFontNamesCommon))
-    console.log("common fonts got")
   }
 
   //PRELOADED FONTS
@@ -88,10 +86,6 @@ const App = () => {
   const [selectedResult, setSelectedResult] = useState(null)
   const [displayedFont, setDisplayedFont] = useState(selectedSource.data[Math.floor(Math.random()*selectedSource.data.length)])
 
-  // console.log('common: ', commonFonts)
-  // console.log('all: ', allFonts)
-  // console.log('trending:', trendingFonts)
-
   const sourceLengths = {
     trending: trendingFonts.length,
     common: commonFonts.length,
@@ -100,7 +94,6 @@ const App = () => {
 
   //INPUT EVENT HANDLERS -- SOURCE
   const handleChangeSource = (e) => {
-    console.log(e.target.id)
     setSelectedResult(null)
     switch (e.target.id) {
       case 'TRENDING' :

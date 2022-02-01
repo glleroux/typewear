@@ -25,18 +25,14 @@ const ControlPanel = ({ font, formStep, setFormStep, order, setOrder, setSearchS
   const handleFontSelect = () => {
     setOrder({...order, font: font})
     setFormStep(2)
-    console.log("yas")
   }
 
   const handleSizeChoice = () => {
-    console.log("hi")
     setOrder({...order, size: selectedSize})
     setFormStep(3)
-    console.log('double yas')
   }
 
   const handleAddressSubmit = () => {
-    console.log("hey")
     setOrder({...order, info: addressValue})
     setFormStep(4)
   }

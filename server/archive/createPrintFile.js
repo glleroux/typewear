@@ -22,7 +22,6 @@ const getStyleSheetURL = async (fontFamily) => {
 //DOWNLOAD FONT
 const getFont = async (fontFamily) => {
   const url = await getStyleSheetURL(fontFamily);
-  console.log(url);
   try {
     const response = await axios.get(url, { responseType: "stream" });
     await response.data.pipe(
@@ -87,7 +86,6 @@ const createPrintFile = async (fontFamily) => {
   try {
     
       const printFileURL = await uploadPrintFile(fontFamilyLow)
-      console.log(printFileURL)
       return printFileURL
    
   } catch (error) {

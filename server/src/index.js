@@ -13,12 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/test", (req, res) => {
-  console.log('test route GET')
-  console.log(req)
-  res.json('Hello World!')
-})
-
 app.post("/payment", cors(), async (req, res) => {
   console.log("stripe-routes.js 9 | route reached", req.body);
   let { amount, id } = req.body;

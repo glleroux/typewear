@@ -25,9 +25,6 @@ const filterFontFamilies = async (arr) => {
 
     let name = arr.length > 200 ? 'all' : 'common'
 
-    //Length when unfiltered
-    console.log(`unfiltered length (${name} fonts):`, arr.length)
-
     const cssFile = await getCSSFile()
     const boolArray = await Promise.all(arr.map(fontFamily => fontIsFoundInCSSFile(fontFamily, cssFile)))
 
@@ -37,9 +34,6 @@ const filterFontFamilies = async (arr) => {
             filteredByCSS.push(arr[i])
         }
     }
-
-    //Length when filtered
-    console.log(`filtered length (${name} fonts):`, filteredByCSS.length)
 
     const manualExclusionList = [
         'Diplomata', 
@@ -64,10 +58,6 @@ const filterFontFamilies = async (arr) => {
     ]
 
     const result = filteredByCSS.filter(fontFamily => !manualExclusionList.includes(fontFamily))
-    console.log('double filtered length: ', result.length)
-
-    const temporaryFilter = result.filter(fontFamily => fontFamily.indexOf(' ') !== -1)
-    console.log('one word fonts length: ', temporaryFilter)
 
     return result
 }

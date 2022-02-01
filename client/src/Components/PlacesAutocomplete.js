@@ -44,7 +44,6 @@ const PlacesAutocomplete = ({ toggleGPlacesFocus, setAddressValue, addressValue 
       setAddressValue(Object.assign(addressValue,inktAddress))
       setValue(description, false);
       clearSuggestions();
-      console.log('state address value: ', addressValue)
     } catch (error) {
       console.log("Error: ", error);
     }

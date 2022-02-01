@@ -14,23 +14,14 @@ cloudinary.config({
 const getCloudinaryURL = async (font) => {
     const fontPath = path.resolve(__dirname + `/../fonts/${font}.ttf`)
     try {
-        let now = Date.now()
         await downloadFont(font, fontPath) //this function downloads the font from googleapis
-        console.log("Download font", Date.now() - now)
-        now = Date.now()
-
         const imagePath = await generateImage(font, fontPath)
-        console.log("Generate image", Date.now() - now)
-        now = Date.now()
-
         const uploadResponse = await cloudinary.uploader.upload(imagePath, {use_filename: true, unique_filename: false})
-        console.log("Upload image", Date.now() - now)
-        now = Date.now()
 
         console.log(`${font} image uploaded: `, uploadResponse.url)
         return uploadResponse.url
     } catch (error) {
-        console.log('second error: ', error)
+        console.log(error)
     }
 }
 
@@ -42,7 +33,7 @@ const fontLowerCase = font.toLowerCase() //this just makes the font name lowerca
       family: font
     });
   } catch (error) {
-    console.log('this is error: ', error)
+    console.log(error)
   }
 
   const canvas = createCanvas(2000, 2000);

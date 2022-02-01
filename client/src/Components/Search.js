@@ -17,25 +17,20 @@ const Search = ({
     trendingFonts }) => {
 
     const handleSearchResultClick = (e) => {
-        console.log(e.target.id)
         const fontName = e.target.id.substring(2)
         setSelectedResult(fontName)
-        console.log('selected: ', selectedResult)
     }
     
     const handleClick = (e) => {
-        console.log(e.target.className)
         if (e.target.className === 'modal' || e.target.id === 'close-icon') {
             setSelectedResult(null)
             setSearchShown(false)
         } else {
-            console.log('clicking')
             return
         }
     }
 
     const onChange = (e) => {
-        console.log(e.target.value)
         setSearchQuery(e.target.value)
     }
 

@@ -10,12 +10,11 @@ cloudinary.config({
 
 const uploadPrintFile = async (printFile) => {
   try {
-    console.log("trying here")
     const uploadResponse = await cloudinary.uploader.upload(path.resolve(__dirname + `/../images/${printFile}.png`))
     console.log(uploadResponse)
     return uploadResponse.url
   } catch (error) {
-    console.log('this is the error: ', error)
+    console.log(error)
   }
 }
 

@@ -24,18 +24,6 @@ const createOrder = async (order) => {
     console.log(req.data)
 }
 
-// const getOrders = async () => {
-//     const req = await axios.get('https://www.inkthreadable.co.uk/api/orders.php', {
-//         params: {
-//             AppId: APP_ID,
-//             Signature: sha1(`AppId=${APP_ID}${SECRET_KEY}`)
-//         }
-//     })
-
-//     console.log(req.data)
-// }
-
-
 const exampleOrder = {
     "brandName": "Inkthreadable",
     "comment": "Test order.",

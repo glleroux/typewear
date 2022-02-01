@@ -14,10 +14,6 @@ const sha1 = str => {
 
 
 const sendOrder = async (order, printFileURL) => {
-    console.log('trying here')
-    console.log(order)
-    console.log(order.font)
-
     const {font, size } = order
     const {name, address1, address2, city, county, postcode, country} = order.info
 
@@ -52,8 +48,6 @@ const sendOrder = async (order, printFileURL) => {
         ]
     }
 
-    console.log('trying there')
-
     const req = await axios.post('https://www.inkthreadable.co.uk/api/orders.php', inktOrder, {
         params: {
             AppId: APP_ID,
@@ -61,22 +55,7 @@ const sendOrder = async (order, printFileURL) => {
         }
     })
 
-    console.log('here?: ', req.data)
-    console.log(req.data.order.items)
-
     return req.data.order.id
 }
-
-// const getOrders = async () => {
-//     const req = await axios.get('https://www.inkthreadable.co.uk/api/orders.php', {
-//         params: {
-//             AppId: 'APP-00205121',
-//             Signature: sha1(`AppId=${APP_ID}${SECRET_KEY}`)
-//         }
-//     })
-
-//     console.log(req.data)
-//     console.log(req.data.orders[0])
-// }
 
 module.exports = sendOrder

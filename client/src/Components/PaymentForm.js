@@ -36,7 +36,6 @@ const PaymentForm = ({ setFormStep, order, options }) => {
       };
 
     const handleSubmit = async (e) => {
-        console.log("submitted")
         e.preventDefault()
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: "card",
@@ -48,14 +47,12 @@ const PaymentForm = ({ setFormStep, order, options }) => {
             //FOR BACKEND
             try {
                 const {id} = paymentMethod
-                console.log('trying')
                 const response = await axios.post("https://typewear.herokuapp.com/payment", {
                     amount: 2999,
                     id
                 })
 
                 if (response.data.success) {
-                    console.log("successful payment")
                     setFormStep(5)
                     //generate URI?
                     sendOrder(order)

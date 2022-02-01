@@ -11,7 +11,6 @@ cloudinary.config({
 const searchCloudinary = async (font) => {
     try {
         const response = await cloudinary.search.expression(`filename=${font.toLowerCase()}`).execute()
-        console.log('response ', response)
         result = response.total_count > 0 ? response.resources[0].url : ""
         return result
     } catch (error) {
