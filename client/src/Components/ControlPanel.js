@@ -6,7 +6,7 @@ import Step5 from './Step5'
 
 import { useState } from 'react';
 
-const ControlPanel = ({ font, formStep, setFormStep, order, setOrder, setSearchShown }) => {
+const ControlPanel = ({ font, formStep, setFormStep, order, setOrder, setSearchShown, paymentSuccess, setPaymentSuccess }) => {
  
   const [selectedSize, setSelectedSize] = useState(null)
   const [addressValue, setAddressValue] = useState({
@@ -63,10 +63,12 @@ const ControlPanel = ({ font, formStep, setFormStep, order, setOrder, setSearchS
         formStep={formStep}
         setFormStep={setFormStep}
         order={order}
+        setPaymentSuccess={setPaymentSuccess}
         />
       <Step5
         formStep={formStep}
         setFormStep={setFormStep}
+        paymentSuccess={paymentSuccess}
         />
     </>
   )

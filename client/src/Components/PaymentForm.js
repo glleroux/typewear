@@ -3,7 +3,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import Button from './Button'
 import axios from 'axios'
 
-const PaymentForm = ({ setFormStep, order, options }) => {
+const PaymentForm = ({ setFormStep, order, options, setPaymentSuccess }) => {
     const stripe = useStripe()
     const elements = useElements()
 
@@ -43,21 +43,28 @@ const PaymentForm = ({ setFormStep, order, options }) => {
         })
 
         if(!error) {
+
             console.log("Stripe 23 | token generated", paymentMethod)
-            //FOR BACKEND
             try {
                 const {id} = paymentMethod
+                // const response = await axios.post("http://localhost:8080/payment", {
+                //     amount: 2999,
+                //     id
+                // })
                 const response = await axios.post("https://typewear.herokuapp.com/payment", {
                     amount: 2999,
                     id
                 })
 
                 if (response.data.success) {
+                    setPaymentSuccess(true)
                     setFormStep(5)
                     //generate URI?
-                    sendOrder(order)
+                    await sendOrder(order)
                 }
             } catch (error) {
+                setPaymentSuccess(false)
+                setFormStep(5)
                 console.log("Error", error)
             }
         } else {
@@ -78,6 +85,7 @@ const PaymentForm = ({ setFormStep, order, options }) => {
 
 const sendOrder = async (order) => {
     console.log("sending", order)
+    // await axios.post("http://localhost:8080/order", order)
     await axios.post("https://typewear.herokuapp.com/order", order)
 }
 

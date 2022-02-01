@@ -85,6 +85,7 @@ const App = () => {
   const [selectedSource, setSelectedSource] = useState({name: 'trending', data: [...trendingFonts].sort(() => Math.random() - 0.5)})
   const [selectedResult, setSelectedResult] = useState(null)
   const [displayedFont, setDisplayedFont] = useState(selectedSource.data[Math.floor(Math.random()*selectedSource.data.length)])
+  const [paymentSuccess, setPaymentSuccess] = useState(null)
 
   const sourceLengths = {
     trending: trendingFonts.length,
@@ -134,6 +135,8 @@ const App = () => {
           order={order}
           setOrder={setOrder}
           setSearchShown={setSearchShown}
+          paymentSuccess={paymentSuccess}
+          setPaymentSuccess={setPaymentSuccess}
         />
         {infoShown ? <InfoPanel setInfoShown={setInfoShown}/> : <ResultPanel 
           font={displayedFont}

@@ -2,7 +2,7 @@ import StripeContainer from "./StripeContainer"
 import StepContainer from "./StepContainer"
 import { motion, AnimatePresence } from "framer-motion";
 
-const Step4 = ({ formStep, setFormStep, order }) => {
+const Step4 = ({ formStep, setFormStep, order, setPaymentSuccess }) => {
     
     if (formStep !== 4) {
         return null
@@ -17,7 +17,7 @@ const Step4 = ({ formStep, setFormStep, order }) => {
             >
                 <StepContainer name='/ payment'>
                     <div className='step-content'>
-                        <StripeContainer setFormStep={setFormStep} order={order}/>
+                        <StripeContainer setFormStep={setFormStep} order={order} setPaymentSuccess={setPaymentSuccess}/>
                     </div>
                 </StepContainer>
             </motion.div>
