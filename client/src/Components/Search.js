@@ -2,6 +2,7 @@ import FormField from "./FormField"
 import Sources from "./Sources"
 import SearchResult from "./SearchResult"
 import Button from './Button'
+import CloseIcon from '@mui/icons-material/Close';
 
 const Search = ({ 
     setSearchShown, 
@@ -24,11 +25,12 @@ const Search = ({
     
     const handleClick = (e) => {
         console.log(e.target.className)
-        if (e.target.className !== 'modal') {
-            return
-        } else {
+        if (e.target.className === 'modal' || e.target.id === 'close-icon') {
             setSelectedResult(null)
             setSearchShown(false)
+        } else {
+            console.log('clicking')
+            return
         }
     }
 
@@ -56,7 +58,7 @@ const Search = ({
                     <p className='step-name'>/ FIND TYPEFACE</p>
                     <div className='search-content'>
                         <div className='search-inputs-container'>
-                            <FormField label='SEARCH' placeholder={`eg. ${selectedSource.data[Math.floor(Math.random()*selectedSource.data.length)]}`} value={searchQuery} onChange={onChange} style={style}/>
+                            <FormField id='search-form-field' label='SEARCH' placeholder={`eg. ${selectedSource.data[Math.floor(Math.random()*selectedSource.data.length)]}`} value={searchQuery} onChange={onChange} style={style}/>
                             <Sources label='SOURCE' selectedSource={selectedSource} handleChangeSource={handleChangeSource} sourceLengths={sourceLengths}/>
                         </div>
                         <div className='search-results-container'>
@@ -77,6 +79,7 @@ const Search = ({
                 </div>
             </div>
             {selectedResult ? <Button label='CONFIRM' role='' handler={() => handleSearchConfirmClick()}/> : <Button label='hidden' role=''/>}
+            <CloseIcon id='close-icon'/>
         </div>
     )
 }

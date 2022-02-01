@@ -3,7 +3,7 @@ import FontSource from './FontSource'
 const Sources = ({ label, handleChangeSource, selectedSource, sourceLengths}) => {
     
     return (
-        <div className='form-field'>
+        <div id='sources-form-field' className='form-field'>
             <div className='form-field-label'>
                 <label>{label}</label>
             </div>

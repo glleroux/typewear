@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.6f22dbc8.chunk.css",
+    "main.css": "/static/css/main.08aeffc6.chunk.css",
     "main.js": "/static/js/main.8a064c31.chunk.js",
     "main.js.map": "/static/js/main.8a064c31.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.a8975d0d.js",
@@ -8,7 +8,7 @@
     "static/js/2.7387253e.chunk.js": "/static/js/2.7387253e.chunk.js",
     "static/js/2.7387253e.chunk.js.map": "/static/js/2.7387253e.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.6f22dbc8.chunk.css.map": "/static/css/main.6f22dbc8.chunk.css.map",
+    "static/css/main.08aeffc6.chunk.css.map": "/static/css/main.08aeffc6.chunk.css.map",
     "static/js/2.7387253e.chunk.js.LICENSE.txt": "/static/js/2.7387253e.chunk.js.LICENSE.txt",
     "static/media/result2.3c10d9d2.png": "/static/media/result2.3c10d9d2.png",
     "static/media/App.css": "/static/media/sk-modernist-regular-webfont-webfont.f6367fc9.woff"
@@ -16,7 +16,7 @@
   "entrypoints": [
     "static/js/runtime-main.a8975d0d.js",
     "static/js/2.7387253e.chunk.js",
-    "static/css/main.6f22dbc8.chunk.css",
+    "static/css/main.08aeffc6.chunk.css",
     "static/js/main.8a064c31.chunk.js"
   ]
 }

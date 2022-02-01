@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const FormField = ({ label, placeholder, extraClass='', value, onChange, style }) => {
+const FormField = ({ label, id, placeholder, extraClass='', value, onChange, style }) => {
     
     const [isFocused, setIsFocused] = useState(false)
 
@@ -9,7 +9,7 @@ const FormField = ({ label, placeholder, extraClass='', value, onChange, style }
     } 
     
     return (
-        <div className={`form-field ${extraClass}`}>
+        <div id={id} className={`form-field ${extraClass}`}>
             <div className={isFocused ? 'form-field-label label-focused' :'form-field-label'}>
                 <label>{label}</label>
             </div>
