@@ -3,7 +3,7 @@ import useOnclickOutside from "react-cool-onclickoutside";
 import React, { useState } from "react";
 import getAddressObject from "../utils/get_address_object";
 
-const PlacesAutocomplete = ({ toggleGPlacesFocus, setAddressValue, addressValue }) => {
+const PlacesAutocomplete = ({ toggleGPlacesFocus, setAddressValue, addressValue, setAddressChosen }) => {
   const [currIndex, setCurrIndex] = useState(null);
 
   const {
@@ -43,6 +43,7 @@ const PlacesAutocomplete = ({ toggleGPlacesFocus, setAddressValue, addressValue 
       const inktAddress = getAddressObject(details.address_components)
       setAddressValue(Object.assign(addressValue,inktAddress))
       setValue(description, false);
+      setAddressChosen(true)
       clearSuggestions();
     } catch (error) {
       console.log("Error: ", error);

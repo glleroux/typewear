@@ -461,7 +461,7 @@ button:hover {
   font-size: 14px;
   line-height: 22px;
   border-bottom: 1px solid #6d6d6d;
-  padding-bottom: 5%;
+  padding-bottom: 14px;
   padding-top: 10px;
 }
 
@@ -470,6 +470,40 @@ button:hover {
   font-size: 20px;
   text-align: right;
   padding: 10px 0px;
+}
+
+#price-info {
+  font-family: "sk-modernistmono";
+  color: #3a3a3a;
+  font-size: 10px;
+  line-height: normal;
+  text-align: right;
+  text-decoration: underline;
+  margin: 0;
+  margin-left: 16px;
+}
+
+.price-tr-info {
+  margin: 0;
+}
+
+.spa {
+  visibility: hidden;
+}
+
+.info-right {
+  text-align: right;
+  width: 299.2px;
+}
+
+#extra-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+#size-guide-link {
+  text-decoration: none;
 }
 
 .font-family {

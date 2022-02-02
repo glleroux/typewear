@@ -21,7 +21,7 @@ const Step2 = ({ formStep, setFormStep, setSelectedSize, selectedSize, handleSiz
                     </div>
                     <div className='buttons-container'>
                         <Button label='BACK' handler={() => setFormStep(1)}/>
-                        <Button label='CONTINUE' role='select' handler={() => handleSizeChoice()}/>
+                        <Button label='CONTINUE' role='select' buttonValidator={selectedSize} handler={() => handleSizeChoice()}/>
                     </div>
                 </StepContainer>
             </motion.div>

@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAddressValue }) => {
 
     const [isGPlacesFocused, setIsGPlacesFocused] = useState(false)
+    const [addressChosen, setAddressChosen] = useState(false)
 
     const onChange = (e) => {
         const key = e.target.name
@@ -40,7 +41,7 @@ const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAd
                                     <label>address</label>
                                 </div>
                                 <div className={isGPlacesFocused ? 'form-field-input line-focused' :'form-field-input'}>
-                                    <PlacesAutocomplete toggleGPlacesFocus={toggleGPlacesFocus} isGPlacesFocused={isGPlacesFocused} addressValue={addressValue} setAddressValue={setAddressValue}/>
+                                    <PlacesAutocomplete toggleGPlacesFocus={toggleGPlacesFocus} isGPlacesFocused={isGPlacesFocused} addressValue={addressValue} setAddressValue={setAddressValue} setAddressChosen={setAddressChosen}/>
                                 </div>
                             </div>
                     
@@ -48,7 +49,7 @@ const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAd
                     </div>
                     <div className='buttons-container'>
                         <Button label='BACK' handler={() => setFormStep(2)}/>   
-                        <Button label='CONTINUE' role='select' handler={() => handleAddressSubmit()}/>
+                        <Button buttonValidator={[addressValue.name, addressValue.email, addressChosen]} label='CONTINUE' role='select' handler={() => handleAddressSubmit()}/>
                     </div>
                 </StepContainer>
             </motion.div>

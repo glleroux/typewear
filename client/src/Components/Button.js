@@ -1,9 +1,19 @@
-const Button = ({ label, role, handler }) => {
+const Button = ({ label, handler, buttonValidator }) => {
+    console.log(buttonValidator)
+    
+    let disabled
+
+    //yeesh
+    if (Array.isArray(buttonValidator)) {
+        disabled = !buttonValidator.every(Boolean)
+    } else if (buttonValidator === undefined) {
+        disabled = false
+    } else if (buttonValidator === null) {
+        disabled = true
+    }
+
     return (
-    // <div id={label} className={"button " + (role ? 'select' : '')} onClick={handler}>
-    //   <p id={label} className="button-text">{label}</p>
-    // </div>
-    <button id={`${label}`} onClick={handler}>{label}</button>
+    <button id={`${label}`} disabled={disabled} onClick={handler}>{label}</button>
     )
 }
 

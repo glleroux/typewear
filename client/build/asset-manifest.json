@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/static/css/main.79326f24.chunk.css",
-    "main.js": "/static/js/main.955b7c5c.chunk.js",
-    "main.js.map": "/static/js/main.955b7c5c.chunk.js.map",
+    "main.js": "/static/js/main.93f76a68.chunk.js",
+    "main.js.map": "/static/js/main.93f76a68.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.a8975d0d.js",
     "runtime-main.js.map": "/static/js/runtime-main.a8975d0d.js.map",
-    "static/js/2.113456bb.chunk.js": "/static/js/2.113456bb.chunk.js",
-    "static/js/2.113456bb.chunk.js.map": "/static/js/2.113456bb.chunk.js.map",
+    "static/js/2.6527d24f.chunk.js": "/static/js/2.6527d24f.chunk.js",
+    "static/js/2.6527d24f.chunk.js.map": "/static/js/2.6527d24f.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.79326f24.chunk.css.map": "/static/css/main.79326f24.chunk.css.map",
-    "static/js/2.113456bb.chunk.js.LICENSE.txt": "/static/js/2.113456bb.chunk.js.LICENSE.txt",
+    "static/js/2.6527d24f.chunk.js.LICENSE.txt": "/static/js/2.6527d24f.chunk.js.LICENSE.txt",
     "static/media/result2.3c10d9d2.png": "/static/media/result2.3c10d9d2.png",
     "static/media/App.css": "/static/media/sk-modernist-regular-webfont-webfont.f6367fc9.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.a8975d0d.js",
-    "static/js/2.113456bb.chunk.js",
+    "static/js/2.6527d24f.chunk.js",
     "static/css/main.79326f24.chunk.css",
-    "static/js/main.955b7c5c.chunk.js"
+    "static/js/main.93f76a68.chunk.js"
   ]
 }
