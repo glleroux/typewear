@@ -339,6 +339,9 @@ button:hover {
   font-size: 10px;
   text-transform: uppercase;
   color: #6d6d6d;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .form-field-input {
@@ -536,7 +539,7 @@ button:hover {
   height: 100%;
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
 }
 
 .modal-content {
@@ -691,6 +694,15 @@ footer {
 .sub-text {
   margin-left: 0.5rem;
   color: #8c8c8c;
+}
+
+#close-icon {
+  display: none;
+}
+
+#invalid-flag {
+  margin: 0;
+  margin-left: auto;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {
@@ -851,10 +863,17 @@ footer {
     bottom: 16px;
   }
 
-  #close-icon {
+  #close-box {
     position: fixed;
     right: 12px;
     top: 12px;
+    padding: 8px;
+  }
+
+  #close-icon {
+    /* position: fixed;
+    right: 12px;
+    top: 12px; */
     color: #6d6d6d;
   }
 }

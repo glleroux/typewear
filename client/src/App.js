@@ -124,7 +124,8 @@ const App = () => {
         selectedResult={selectedResult}
         setSelectedResult={setSelectedResult}
         setDisplayedFont={setDisplayedFont}
-        trendingFonts={trendingFonts}
+        setSelectedSource={setSelectedSource}
+        allFonts={allFonts}
       />}
       {allFonts.length > 0 && commonFonts.length > 0 
       ? <div className='content-wrapper'>

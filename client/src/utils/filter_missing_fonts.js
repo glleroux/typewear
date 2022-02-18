@@ -54,7 +54,6 @@ const filterFontFamilies = async (arr) => {
         'Stanlinist One',
         'Nokora',
         'Content',
-
     ]
 
     const result = filteredByCSS.filter(fontFamily => !manualExclusionList.includes(fontFamily))

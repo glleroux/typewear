@@ -1,5 +1,4 @@
 const Button = ({ label, handler, buttonValidator }) => {
-    console.log(buttonValidator)
     
     let disabled
 
