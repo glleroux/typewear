@@ -11,10 +11,11 @@ const Search = ({
     sourceLengths, 
     selectedSource, 
     handleChangeSource, 
-    selectedResult, 
+    selectedResult,
+    setSelectedSource,
+    allFonts, 
     setSelectedResult, 
-    setDisplayedFont, 
-    trendingFonts }) => {
+    setDisplayedFont, }) => {
 
     const handleSearchResultClick = (e) => {
         const fontName = e.target.id.substring(2)
@@ -22,7 +23,7 @@ const Search = ({
     }
     
     const handleClick = (e) => {
-        if (e.target.className === 'modal' || e.target.id === 'close-icon') {
+        if (e.target.className === 'modal' || e.target.id === 'close-box' || e.target.id === 'close-icon') {
             setSelectedResult(null)
             setSearchShown(false)
         } else {
@@ -53,7 +54,16 @@ const Search = ({
                     <p className='step-name'>/ FIND TYPEFACE</p>
                     <div className='search-content'>
                         <div className='search-inputs-container'>
-                            <FormField id='search-form-field' label='SEARCH' placeholder={`eg. ${selectedSource.data[Math.floor(Math.random()*selectedSource.data.length)]}`} value={searchQuery} onChange={onChange} style={style}/>
+                            <FormField 
+                                id='search-form-field' 
+                                label='SEARCH' 
+                                placeholder={`eg. ${selectedSource.data[Math.floor(Math.random()*selectedSource.data.length)]}`} 
+                                value={searchQuery} 
+                                onChange={onChange} 
+                                style={style}
+                                setSelectedSource={setSelectedSource}
+                                allFonts={allFonts}
+                            />
                             <Sources label='SOURCE' selectedSource={selectedSource} handleChangeSource={handleChangeSource} sourceLengths={sourceLengths}/>
                         </div>
                         <div className='search-results-container'>
@@ -65,7 +75,6 @@ const Search = ({
                                         font={font} 
                                         isActive={(selectedResult === font) ? true : false}
                                         handleClick={handleSearchResultClick}
-                                        trendingFonts={trendingFonts}
                                         />)
                                 }
                             </div>
@@ -74,7 +83,9 @@ const Search = ({
                 </div>
             </div>
             {selectedResult ? <Button label='CONFIRM' role='' handler={() => handleSearchConfirmClick()}/> : <Button label='hidden' role=''/>}
-            <CloseIcon id='close-icon'/>
+            <div id='close-box'>
+                <CloseIcon id='close-icon'/>
+            </div>
         </div>
     )
 }
