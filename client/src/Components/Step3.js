@@ -10,6 +10,7 @@ const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAd
 
     const [isGPlacesFocused, setIsGPlacesFocused] = useState(false)
     const [addressChosen, setAddressChosen] = useState(false)
+    const [email, setEmail] = useState('')
     const [emailValid, setEmailValid] = useState(false)
 
     const onChange = (e) => {
@@ -17,7 +18,8 @@ const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAd
         setAddressValue({...addressValue, [key]: e.target.value})
 
         if (e.target.name === 'email') {
-            if (!validateEmail(e.target.value)) {
+            setEmail(e.target.value)
+            if (!validateEmail(email)) {
                 setEmailValid(false)
             } else {
                 setEmailValid(true)
@@ -50,7 +52,7 @@ const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAd
                     <div className='step-content'>
                         <div className='form-container'>
                             <FormField label='name' placeholder='Gordon Bombay' value={addressValue.name} onChange={onChange}/>
-                            <FormField label='email' placeholder='gordon@themightyducks.com' value={addressValue.email} onChange={onChange} emailValid={emailValid}/>    
+                            <FormField label='email' placeholder='gordon@themightyducks.com' value={addressValue.email} onChange={onChange} emailValid={emailValid} email={email}/>    
                             <div className={`form-field`}>
                                 <div className={isGPlacesFocused ? 'form-field-label label-focused' :'form-field-label'}>
                                     <label for='listbox'>address</label>
@@ -64,7 +66,7 @@ const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAd
                     </div>
                     <div className='buttons-container'>
                         <Button label='BACK' handler={() => setFormStep(2)}/>   
-                        <Button buttonValidator={[addressValue.name, addressValue.email, addressChosen]} label='CONTINUE' role='select' handler={() => handleAddressSubmit()}/>
+                        <Button buttonValidator={[addressValue.name, addressValue.email, addressChosen, emailValid]} label='CONTINUE' role='select' handler={() => handleAddressSubmit()}/>
                     </div>
                 </StepContainer>
             </motion.div>
