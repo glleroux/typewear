@@ -10,10 +10,20 @@ const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAd
 
     const [isGPlacesFocused, setIsGPlacesFocused] = useState(false)
     const [addressChosen, setAddressChosen] = useState(false)
+    const [emailValid, setEmailValid] = useState(false)
 
     const onChange = (e) => {
         const key = e.target.name
         setAddressValue({...addressValue, [key]: e.target.value})
+
+        if (e.target.name === 'email') {
+            if (!validateEmail(e.target.value)) {
+                setEmailValid(false)
+            } else {
+                setEmailValid(true)
+            }
+            console.log(emailValid)
+        }
     }
     
     if (formStep !== 3) {
@@ -23,6 +33,11 @@ const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAd
     const toggleGPlacesFocus = () => {
         setIsGPlacesFocused(!isGPlacesFocused)
     } 
+
+    const validateEmail = (email) => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
 
     return (
         <AnimatePresence>
@@ -35,10 +50,10 @@ const Step3 = ({ formStep, setFormStep, handleAddressSubmit, addressValue, setAd
                     <div className='step-content'>
                         <div className='form-container'>
                             <FormField label='name' placeholder='Gordon Bombay' value={addressValue.name} onChange={onChange}/>
-                            <FormField label='email'placeholder='gordon@themightyducks.com' value={addressValue.email} onChange={onChange}/>    
+                            <FormField label='email' placeholder='gordon@themightyducks.com' value={addressValue.email} onChange={onChange} emailValid={emailValid}/>    
                             <div className={`form-field`}>
                                 <div className={isGPlacesFocused ? 'form-field-label label-focused' :'form-field-label'}>
-                                    <label>address</label>
+                                    <label for='listbox'>address</label>
                                 </div>
                                 <div className={isGPlacesFocused ? 'form-field-input line-focused' :'form-field-input'}>
                                     <PlacesAutocomplete toggleGPlacesFocus={toggleGPlacesFocus} isGPlacesFocused={isGPlacesFocused} addressValue={addressValue} setAddressValue={setAddressValue} setAddressChosen={setAddressChosen}/>
