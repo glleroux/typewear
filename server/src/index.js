@@ -7,8 +7,12 @@ require("dotenv").config({path:`${__dirname}/../.env`});
 const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST);
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const axios = require('axios');
 const chalk = require('chalk');
+const nodemailer = require('nodemailer')
+const getEmailHTML = require('./utils/getEmailHTML')
+const dayjs = require('dayjs');
+const dayjsBusinessTime = require('dayjs-business-time');
+dayjs.extend(dayjsBusinessTime);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -60,16 +64,65 @@ app.post("/order", async (req, res) => {
     console.log(`${order.font} print file created.`)
   }
 
+  let orderId = null
+
   //SEND TO FULFILMENT
   console.log(`Submitting order details to fulfillment...`)
     try {
-    const orderId = await sendOrder(order, printFileURL)
+    orderId = await sendOrder(order, printFileURL)
     console.log('Order submitted successfully. Inkthreadable order ID:', chalk.blue(orderId))
     res.json('order submitted')  
   } catch (error) {
     console.log('Unsuccessful. Error:')
     console.log(error.data)
   }
+
+  //SEND CONFIRMATION EMAIL
+  if (orderId) {
+    console.log(`Sending confirmation email to customer...`)
+    
+    const day = dayjs();
+    const timeToAdd = 10;
+    const deliveryDate = day.addBusinessDays(timeToAdd).format('DD-MMM');
+
+    const html = getEmailHTML(orderId, order, deliveryDate)
+    const to = order.info.email
+    const transporter = nodemailer.createTransport({
+      host: process.env.MAIL_HOST,
+      port: process.env.MAIL_PORT,
+      auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS    
+      }
+    })
+    
+    try {
+      await transporter.sendMail({
+        from: process.env.MAIL_FROM,
+        to: "rorybuckle@gmail.com", 
+        subject: `typewear — order ${orderId} confirmed`,
+        html
+      }, (err, info) => {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log(`Confirmation email sent to ${chalk.blue(to)} successfully`)
+          console.log(info)
+          res.json('success')
+        }
+      })
+  
+    } catch (error) {
+      console.log(error)
+    }
+  } else {
+    console.log(`Error with fulfillment. Confirmation email not sent.`)
+  }
+})
+
+app.post('/send_email', cors(), async(req, res) => {
+  
+
 })
 
 const PORT = process.env.PORT || 8080
