@@ -48,18 +48,17 @@ const PaymentForm = ({ setFormStep, order, options, setPaymentSuccess }) => {
             try {
                 const {id} = paymentMethod
                 // const response = await axios.post("http://localhost:8080/payment", {
-                //     amount: 2999,
+                //     amount: 2900,
                 //     id
                 // })
                 const response = await axios.post("https://typewear.herokuapp.com/payment", {
-                    amount: 2999,
+                    amount: 2900,
                     id
                 })
 
                 if (response.data.success) {
                     setPaymentSuccess(true)
                     setFormStep(5)
-                    //generate URI?
                     await sendOrder(order)
                 }
             } catch (error) {
