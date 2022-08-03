@@ -1,5 +1,5 @@
-import SizeList from '../Components/SizeList'
-import Button from '../Components/Button'
+import SizeList from './SizeList'
+import Button from './Button'
 import StepContainer from './StepContainer'
 import { motion, AnimatePresence } from "framer-motion";
 

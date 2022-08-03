@@ -99,8 +99,8 @@ app.post("/order", async (req, res) => {
     try {
       await transporter.sendMail({
         from: process.env.MAIL_FROM,
-        to: "rorybuckle@gmail.com", 
-        subject: `typewear — order ${orderId} confirmed`,
+        to: order.info.email, 
+        subject: `typewear: order ${orderId} confirmed`,
         html
       }, (err, info) => {
         if (err) {

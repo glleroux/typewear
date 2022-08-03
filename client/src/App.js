@@ -1,63 +1,25 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import Header from './Components/Header'
-import ControlPanel from './Components/ControlPanel'
-import ResultPanel from './Components/ResultPanel'
-import InfoPanel from './Components/InfoPanel'
-import Footer from './Components/Footer'
-import Search from './Components/Search'
-import filterFontFamilies from './utils/filter_missing_fonts'
-import StepLoading from './Components/StepLoading'
+import Header from './components/Header'
+import ControlPanel from './components/ControlPanel'
+import ResultPanel from './components/ResultPanel'
+import InfoPanel from './components/InfoPanel'
+import Footer from './components/Footer'
+import Search from './components/Search'
+import StepLoading from './components/StepLoading'
 
-require('dotenv').config()
-const axios = require('axios')
+import { getFontNames, trendingFonts } from './services/fontService'
 
 const App = () => {
 
-  //GOOGLE FONTS API
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getFonts = async () => {
-    const responseAll = await axios.get(`https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_KEY}`)
-    const fontObjectsAll = responseAll.data.items
-    const fontNamesAll = fontObjectsAll.map(font => font.family)
-    const filteredFontNamesAll = await filterFontFamilies(fontNamesAll)
-    await setAllFonts(allFonts.concat(filteredFontNamesAll))
-
-    const responseCommon = await axios.get(`https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_KEY}&sort=popularity`)
-    const fontObjectsCommon = responseCommon.data.items
-    const fontNamesCommon = fontObjectsCommon.map(font => font.family).slice(0,200)
-    const filteredFontNamesCommon = await filterFontFamilies(fontNamesCommon)
-    await setCommonFonts(commonFonts.concat(filteredFontNamesCommon))
+    const allFontNames = await getFontNames('all')
+    setAllFonts(allFonts.concat(allFontNames))
+    const commonFontNames = await getFontNames('common')
+    setCommonFonts(commonFonts.concat(commonFontNames.slice(0,200)))
   }
-
-  //PRELOADED FONTS
-  const trendingFonts = [
-    'Pattaya',
-    "Work Sans",
-    'Baumans',
-    'Belgrano',
-    'Unna',
-    'Pacifico',
-    'Farro',
-    'Junge',
-    'Lacquer',
-    'Solway',
-    'Sunshiney',
-    'Staatliches',
-    'Quattrocento',
-    'Overlock',
-    'Fenix',
-    'Amiko',
-    'Cinzel',
-    'Chelsea Market',
-    'Chicle',
-    'Coda',
-    'Unkempt',
-    'Palanquin',
-    'Volkhov',
-    'Knewave'
-  ]
-
+ 
   useEffect(getFonts, [])
 
   //STATE

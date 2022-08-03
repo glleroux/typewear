@@ -1,15 +1,21 @@
-import { getName } from '../utils/font_helper'
+import { useEffect } from 'react';
+import WebFont from 'webfontloader';
 
 const Font = ({ font, id, containerClass }) => {
 
-  const easyName = getName(font)
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: [font]
+      }
+    });
+   }, []);
 
   return (
-    
         <div className={containerClass}>
-            <p id={id} className={`font-family ${easyName} w600`}>{font.toLowerCase()}</p>
+            {/* <p id={id} className={`font-family ${easyName} w600`}>{font.toLowerCase()}</p> */}
+            <p id={id} className={'font-family'} style={{fontFamily: font, fontWeight: 'bold'}}>{font.toLowerCase()}</p>
         </div>
-  
   )
 }
 
